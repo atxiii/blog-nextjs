@@ -1,16 +1,78 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+p,
+span {
+  @apply font-body;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.containers {
+  @apply container;
 }
 
-* {
-  box-sizing: border-box;
+.menu__lines::before,
+.menu__lines::after {
+  content: '';
+  position: absolute;
+  width: 2.4rem;
+  height: 3px;
+  background: #000;
+  transition: all 1s cubic-bezier(1, -0.03, 0.03, 1.36) 0s;
+}
+.menu__lines.open::before,
+.menu__lines.open::after {
+  background: #fff;
+}
+.menu__lines::before {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -0.4rem) rotate(0deg);
+}
+.menu__lines::after {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 0.3rem) rotate(0deg);
+}
+
+.menu__lines.open::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.menu__lines.open::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.logo {
+  width: 138px;
+  height: 54px;
+}
+.menu {
+  width: 37px;
+  height: 13px;
+}
+.search {
+  width: 30px;
+  height: auto;
+}
+
+.rotateText {
+  writing-mode: vertical-rl;
+  -webkit-writing-mode: vertical-rl;
+}
+.intro .image {
+  width: calc(100vw - 25px);
+  height: calc(100vw - 25px);
+}
+
+@media (min-width: 768px) {
+  .logo {
+    width: calc(277 / 1920 * 100vw);
+    height: calc(109 / 1920 * 100vw);
+  }
+
+  .intro .image {
+    width: calc(477 / 1920 * 100vw);
+    height: 100%;
+  }
 }
