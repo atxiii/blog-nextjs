@@ -1,7 +1,7 @@
 import BlogLayout from '@layouts/blog';
 import { getPostBySlug, getAllPosts } from '_api';
 
-interface Context {
+interface Params {
   params: {
     slug: string;
   };
@@ -17,7 +17,7 @@ export default function Post(props: any) {
   );
 }
 
-export async function getStaticProps(context: Context) {
+export async function getStaticProps(context: Params) {
   return {
     props: await getPostBySlug(context.params.slug),
   };

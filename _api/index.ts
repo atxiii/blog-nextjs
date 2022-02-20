@@ -46,6 +46,7 @@ export async function getAllPosts(tag: string = '') {
       tags,
       title: meta.data.title,
       date: meta.data.date,
+      cover: meta.data.cover,
     });
   }
 

@@ -11,7 +11,7 @@ const Home: NextPage = (props: any) => {
       <Intro />
       <Tags tags={tags} />
 
-      {/* <Posts posts={posts} /> */}
+      <Posts posts={posts} />
     </>
   );
 };
