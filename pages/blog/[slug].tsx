@@ -1,5 +1,6 @@
 import BlogLayout from '@layouts/blog';
-import { getPostBySlug, getAllPosts } from '_api';
+import { useMDXComponent } from 'next-contentlayer/hooks';
+import { Blog, getAllBlogs } from 'contentlayer/generated';
 
 interface Context {
   params: {
@@ -24,7 +25,8 @@ export async function getStaticProps(context: Context) {
 }
 
 export async function getStaticPaths() {
-  const posts = await getAllPosts();
+  const posts = await getAllBlogs();
+  console.log(posts);
   let paths: { params: { slug: any } }[] = [];
 
   if (Array.isArray(posts)) {
