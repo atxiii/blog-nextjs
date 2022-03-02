@@ -15,7 +15,11 @@ const Header = () => {
       link: '/blog',
     },
   ];
-  return <Navbar links={links} />;
+  return (
+    <header>
+      <Navbar links={links} />
+    </header>
+  );
 };
 
 export default Header;

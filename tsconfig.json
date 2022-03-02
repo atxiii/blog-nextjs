@@ -19,12 +19,13 @@
       "@includes/*": ["_includes/*"],
       "@layouts/*": ["_layouts/*"],
       "@posts/*": ["_posts/*"],
-      "@api": ["api/index"],
-      "contentlayer/generated": ["./.contentlayer/generated"]
+      "@api/*": ["_api/*"],
+      "contentlayer/generated": [".contentlayer/generated"]
     }
   },
   "include": [
     "next-env.d.ts",
+    "types.ts",
     "**/*.ts",
     "**/*.tsx",
     "_includes/_document.js",

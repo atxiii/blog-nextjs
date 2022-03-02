@@ -2,6 +2,7 @@ import BlogLayout from '@layouts/blog';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import { allBlogs } from '../../.contentlayer/generated';
 import type { Blog } from '../../.contentlayer/generated';
+import { allTags } from '_api';
 type BlogProps = {
   blog: Blog;
 };
@@ -17,7 +18,7 @@ export default function Blog({ blog }: BlogProps) {
 
 export const getStaticPaths = async () => {
   return {
-    paths: allBlogs.map(p => ({ params: { slug: p.slug } })),
+    paths: allTags().map(p => ({ params: { slug: 'test' } })),
     fallback: false,
   };
 };
