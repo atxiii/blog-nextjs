@@ -1,4 +1,6 @@
 module.exports = {
+  darkMode: 'class',
+
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
     './_includes/**/*.{js,ts,jsx,tsx}',
@@ -21,6 +23,7 @@ module.exports = {
     extend: {
       colors: {
         onion: '#CD6868',
+        skyly: '#072534',
       },
     },
   },

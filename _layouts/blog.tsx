@@ -1,21 +1,27 @@
-import Layout from './layout';
 import Head from 'next/head';
-import DOMPurify from 'isomorphic-dompurify';
+import { ReactChild, ReactFragment, ReactPortal, ReactNode } from 'react';
+import type { Blog } from './../.contentlayer/generated';
+interface BlogLayoutProps {
+  blog?: Blog;
+  children:
+    | ReactNode
+    | boolean
+    | ReactChild
+    | ReactFragment
+    | ReactPortal
+    | null
+    | undefined;
+}
 
-const BlogLayout = (props: any) => {
-  // Sanitize Content
-  const content = DOMPurify.sanitize(props.content);
-
+const BlogLayout = ({ children, blog }: BlogLayoutProps) => {
   return (
     <>
       <Head>
-        <title>{props.title}</title>
-        <meta name="description" content={props.description} />
+        <title>{blog.title}</title>
+        <meta name="description" content={blog.description} />
       </Head>
 
-      <article>
-        <div dangerouslySetInnerHTML={{ __html: content }} />
-      </article>
+      <article>{children}</article>
     </>
   );
 };

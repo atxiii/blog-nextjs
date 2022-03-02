@@ -1,13 +1,14 @@
-/** @type {import('next').NextConfig} */
+const { withContentlayer } = require('next-contentlayer');
+
 const nextConfig = {
   reactStrictMode: true,
-  webpack: function (config) {
-    config.module.rules.push({
-      test: /\.md$|\.yml$/,
-      type: 'asset/source',
-    });
-    return config;
+  images: {
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy:
+      "default-src 'self'; script-src 'none'; sandbox;",
   },
 };
 
-module.exports = nextConfig;
+module.exports = withContentlayer()({
+  nextConfig,
+});

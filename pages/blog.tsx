@@ -1,9 +1,7 @@
 import type { NextPage, GetStaticProps } from 'next';
-import Intro from '@includes/intro';
 import { allBlogs } from '../.contentlayer/generated';
 import type { Blog } from '../.contentlayer/generated';
 import Posts from '@includes/posts';
-import Tags from '@includes/tags';
 import { allTags } from '_api';
 
 interface IProps {
@@ -12,20 +10,8 @@ interface IProps {
   tags: string[];
 }
 
-const Home: NextPage<IProps> = ({ posts, tags }: IProps) => {
-  return (
-    <>
-      <Intro />
-<<<<<<< HEAD
-      <Tags tags={tags} />
-
-      <Posts posts={posts} />
-=======
-      <Tags data={tags} />
-      <Posts data={posts} />
->>>>>>> temp
-    </>
-  );
+const BlogPage: NextPage<IProps> = ({ posts, tags }: IProps) => {
+  return <Posts data={posts} />;
 };
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -34,4 +20,4 @@ export const getStaticProps: GetStaticProps = async () => {
   return { props: { posts, tags } };
 };
 
-export default Home;
+export default BlogPage;

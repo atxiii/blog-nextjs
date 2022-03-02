@@ -19,14 +19,17 @@
       "@includes/*": ["_includes/*"],
       "@layouts/*": ["_layouts/*"],
       "@posts/*": ["_posts/*"],
-      "@api": ["api/index"]
+      "@api/*": ["_api/*"],
+      "contentlayer/generated": [".contentlayer/generated"]
     }
   },
   "include": [
     "next-env.d.ts",
+    "types.ts",
     "**/*.ts",
     "**/*.tsx",
-    "_includes/_document.js"
+    "_includes/_document.js",
+    ".contentlayer/generated"
   ],
   "exclude": ["node_modules"]
 }

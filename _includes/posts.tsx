@@ -1,36 +1,39 @@
+import type { Blog } from '../.contentlayer/generated';
+import Card from './card';
 import Link from 'next/link';
-import Image from 'next/image';
-interface allPosts {
-  posts: [
-    {
-      slug: string;
-      id: string;
-      title: string;
-      date: string;
-      cover: string;
-    },
-  ];
+import { getYamlConfig } from '_api';
+import { config } from 'process';
+interface AllPosts {
+  data: Blog[];
 }
 
-export default function Posts({ posts }: allPosts) {
+export default function Posts({ data }: AllPosts) {
+  const config = async () => {
+    console.log(await getYamlConfig());
+    // return await getYamlConfig();
+  };
+
+  config();
+
   return (
-    <div>
-      {posts.map((post: any) => {
-        return (
-          <div key={post.id}>
-            <Link href={`/blog/${post.slug}`}>
-              <a className="cursor-pointer">
-                {post.title}-{post.date}
-                <Image
-                  src={`/${post.cover}`}
-                  layout="fill"
-                  alt={post.title}
-                />
-              </a>
-            </Link>
-          </div>
-        );
-      })}
-    </div>
+    <>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 justify-around my-8 px-4">
+        {data.map((post: any) => {
+          return (
+            <div key={post._id}>
+              <Card post={post} />
+            </div>
+          );
+        })}
+      </div>
+      <div className="flex w-full justify-end items-center h-40 pr-4">
+        <div className="w-20 h-[2px] bg-gray-500 mr-4"></div>
+        <Link href="/blog">
+          <a title="view all blog" className="text-onion">
+            View All
+          </a>
+        </Link>
+      </div>
+    </>
   );
 }
