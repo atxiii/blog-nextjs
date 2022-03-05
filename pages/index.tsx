@@ -16,14 +16,8 @@ const Home: NextPage<IProps> = ({ posts, tags }: IProps) => {
   return (
     <>
       <Intro />
-<<<<<<< HEAD
-      <Tags tags={tags} />
-
-      <Posts posts={posts} />
-=======
       <Tags data={tags} />
       <Posts data={posts} />
->>>>>>> temp
     </>
   );
 };

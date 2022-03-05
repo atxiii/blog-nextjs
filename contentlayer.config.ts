@@ -1,11 +1,27 @@
 import { defineDocumentType, makeSource } from 'contentlayer/source-files';
-import mdxOptions from './config/mdx';
+import mdxOptions from './data/config/mdx';
 import readingTime from 'reading-time';
+
+export const Customize = defineDocumentType(() => ({
+  name: 'Customize',
+  contentType: 'data',
+  filePathPattern: 'config/**/*.yml',
+  fields: {
+    home: { type: 'json' },
+    title: { type: 'string' },
+    description: { type: 'string' },
+    gridOfPosts: { type: 'string' },
+    mobile: { type: 'string' },
+    tablet: { type: 'string' },
+    desktop: { type: 'string' },
+    footerText: { type: 'string' },
+  },
+}));
 
 export const Blog = defineDocumentType(() => ({
   name: 'Blog',
   contentType: 'mdx',
-  filePathPattern: `blogs/**/*.mdx`,
+  filePathPattern: 'blogs/**/*.mdx',
   fields: {
     title: { type: 'string', required: true },
     publishedAt: { type: 'string', required: true },
@@ -26,7 +42,7 @@ export const Blog = defineDocumentType(() => ({
 }));
 
 export default makeSource({
-  contentDirPath: '_posts',
-  documentTypes: [Blog],
+  contentDirPath: 'data',
+  documentTypes: [Blog, Customize],
   mdx: mdxOptions,
 });

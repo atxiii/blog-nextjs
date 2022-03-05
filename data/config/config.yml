@@ -1,0 +1,9 @@
+home:
+  title: 'My Blog'
+  description: 'This is a rick blog'
+  gridOfPosts:
+    mobile: '2'
+    tablet: '2'
+    desktop: '5'
+
+footerText: 'Footer Text'

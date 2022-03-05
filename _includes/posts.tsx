@@ -1,23 +1,20 @@
 import type { Blog } from '../.contentlayer/generated';
 import Card from './card';
 import Link from 'next/link';
-import { getYamlConfig } from '_api';
-import { config } from 'process';
+import { customize } from '_api';
 interface AllPosts {
   data: Blog[];
 }
 
 export default function Posts({ data }: AllPosts) {
-  const config = async () => {
-    console.log(await getYamlConfig());
-    // return await getYamlConfig();
-  };
 
-  config();
-
+  const grid = `grid grid-cols-${customize.home.gridOfPosts.mobile} md:grid-cols-${customize.home.gridOfPosts.desktop} md:gap-12 gap-6 my-8`
+  
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 justify-around my-8 px-4">
+      <div
+        className={grid}
+      >
         {data.map((post: any) => {
           return (
             <div key={post._id}>

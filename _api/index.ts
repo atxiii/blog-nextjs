@@ -1,6 +1,4 @@
-import { allBlogs } from '.contentlayer/generated';
-import yaml from 'js-yaml';
-import allConfig from '../config.yml';
+import { allBlogs, allCustomizes } from '.contentlayer/generated';
 
 export const allTags = () => {
   const tags: string[] = [];
@@ -12,7 +10,4 @@ export const allTags = () => {
   return Array.from(new Set(tags));
 };
 
-export function getYamlConfig() {
-  console.log(allConfig);
-  return yaml.load(allConfig);
-}
+export const customize = allCustomizes[0];

@@ -6,18 +6,8 @@ type BlogProps = {
   blog: Blog;
 };
 
-<<<<<<< HEAD
-interface Params {
-  params: {
-    slug: string;
-  };
-}
-
-export default function Post(props: any) {
-=======
 export default function Blog({ blog }: BlogProps) {
   const Component = useMDXComponent(blog.body.code);
->>>>>>> temp
   return (
     <BlogLayout blog={blog}>
       <Component />
@@ -25,11 +15,7 @@ export default function Blog({ blog }: BlogProps) {
   );
 }
 
-<<<<<<< HEAD
-export async function getStaticProps(context: Params) {
-=======
 export const getStaticPaths = async () => {
->>>>>>> temp
   return {
     paths: allBlogs.map(p => ({ params: { slug: p.slug } })),
     fallback: false,
