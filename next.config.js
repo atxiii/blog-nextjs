@@ -1,4 +1,6 @@
+const withPlugins = require('next-compose-plugins');
 const { withContentlayer } = require('next-contentlayer');
+const withTwin = require('./next-twin.js');
 
 const nextConfig = {
   reactStrictMode: true,
@@ -9,6 +11,10 @@ const nextConfig = {
   },
 };
 
-module.exports = withContentlayer()({
+const contentLayer = withContentlayer()({
   nextConfig,
 });
+
+const twin = withTwin(nextConfig);
+
+module.exports = withPlugins([contentLayer, twin], nextConfig);

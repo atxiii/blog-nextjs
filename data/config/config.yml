@@ -4,6 +4,20 @@ home:
   gridOfPosts:
     mobile: '2'
     tablet: '2'
-    desktop: '5'
+    desktop: '2'
+  postsPerPage: '2'
+  postsOrder: 'title'
+  postsSort: 'asc'
 
-footerText: 'Footer Text'
+archive:
+  title: 'Blog'
+  description: 'I will Share my experince and more thing...'
+  gridOfPosts:
+    mobile: '2'
+    tablet: '3'
+    desktop: '4'
+  postsOrder: 'title'
+  postsSort: 'ASC'
+  postsPerPage: '2'
+
+footerText: ' Rick. All Rights Reserved.'

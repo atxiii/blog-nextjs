@@ -1,4 +1,5 @@
 {
+  "types": ["types"],
   "compilerOptions": {
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -14,22 +15,26 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "types": ["@emotion/react/types/css-prop"],
     "baseUrl": "./",
     "paths": {
       "@includes/*": ["_includes/*"],
       "@layouts/*": ["_layouts/*"],
       "@posts/*": ["_posts/*"],
+      "@helper/*": ["helper"],
       "@api/*": ["_api/*"],
+      "@types": ["types/index.ts"],
       "contentlayer/generated": [".contentlayer/generated"]
     }
   },
   "include": [
     "next-env.d.ts",
-    "types.ts",
     "**/*.ts",
     "**/*.tsx",
+    "types/index.d.ts",
     "_includes/_document.js",
-    ".contentlayer/generated"
+    ".contentlayer/generated",
+    "pages/articles/[[...page]].tsx"
   ],
   "exclude": ["node_modules"]
 }

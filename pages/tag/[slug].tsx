@@ -1,33 +1,51 @@
-import BlogLayout from '@layouts/blog';
-import { useMDXComponent } from 'next-contentlayer/hooks';
 import { allBlogs } from '../../.contentlayer/generated';
 import type { Blog } from '../../.contentlayer/generated';
 import { allTags } from '_api';
+import Link from 'next/link';
 type BlogProps = {
-  blog: Blog;
+  blogs: Blog[];
+  tag: string;
 };
 
-export default function Blog({ blog }: BlogProps) {
-  const Component = useMDXComponent(blog.body.code);
+export default function PageTag({ blogs, tag }: BlogProps) {
   return (
-    <BlogLayout blog={blog}>
-      <Component />
-    </BlogLayout>
+    <section>
+      <h1 className="text-xl md:text-4xl capitalize font-display my-4">
+        {tag}'s Post
+      </h1>
+      <div className="w-full h-[2px] bg-onion my-3"></div>
+      <ul className="marker:text-onion list-decimal list-outside pl-4">
+        {blogs.map(tag => {
+          return (
+            <li key={tag._id} className="py-3">
+              <Link href={'/blog/' + tag.slug}>
+                <a className="block text-lg">{tag.title}</a>
+              </Link>
+              <p className="mb-3 text-gray-700 dark:text-gray-400">
+                {tag.description}
+              </p>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
   );
 }
 
 export const getStaticPaths = async () => {
   return {
-    paths: allTags().map(p => ({ params: { slug: 'test' } })),
+    paths: allTags().map(tag => ({ params: { slug: tag } })),
     fallback: false,
   };
 };
 
 export const getStaticProps = async ({ params }) => {
-  const blog = allBlogs.find(p => p.slug === params.slug);
+  const blogs = allBlogs.filter(p => p.tag.includes(params.slug));
+
   return {
     props: {
-      blog,
+      blogs,
+      tag: params.slug,
     },
   };
 };

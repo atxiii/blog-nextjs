@@ -77,7 +77,7 @@ const Navbar = (props: { links: Array<Links> }) => {
       <div
         className={`menu__lines block relative w-20 h-4 z-50  ${
           nav ? 'open' : 'close'
-        } dark:before:bg-gray-500 dark:after:bg-gray-500`}
+        } dark:before:bg-gray-500 dark:after:bg-gray-500 cursor-pointer`}
         onClick={handleMenu}
       ></div>
       <div className="absolute bg-red w-1 h-1"></div>

@@ -9,7 +9,7 @@
 /coverage
 
 # next.js
-/.next/
+/.next/*
 /out/
 .next
 
@@ -35,12 +35,8 @@ yarn-error.log*
 .vercel
 
 # typescript
-<<<<<<< HEAD
-*.tsbuildinfo
-=======
 *.tsbuildinfo
 
 
 # Contentlayer
 .contentlayer
->>>>>>> temp

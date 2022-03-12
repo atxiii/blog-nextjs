@@ -10,11 +10,14 @@ export const Customize = defineDocumentType(() => ({
     home: { type: 'json' },
     title: { type: 'string' },
     description: { type: 'string' },
-    gridOfPosts: { type: 'string' },
+    gridOfPosts: { type: 'json' },
     mobile: { type: 'string' },
     tablet: { type: 'string' },
     desktop: { type: 'string' },
     footerText: { type: 'string' },
+    archive: { type: 'json' },
+    postsSort: { type: 'string' },
+    postsOrder: { type: 'string' },
   },
 }));
 
@@ -28,6 +31,7 @@ export const Blog = defineDocumentType(() => ({
     description: { type: 'string', required: true },
     cover: { type: 'string' },
     tag: { type: 'json' },
+    author: { type: 'string', required: true },
   },
   computedFields: {
     readingTime: {

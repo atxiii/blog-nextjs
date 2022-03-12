@@ -1,19 +1,33 @@
-import type { Blog } from '../.contentlayer/generated';
+import type { Blog, Customize } from '../.contentlayer/generated';
 import Card from './card';
 import Link from 'next/link';
-import { customize } from '_api';
+import { themeGrids } from 'helper';
+import { useRouter } from 'next/router';
+
 interface AllPosts {
   data: Blog[];
+  option: Customize;
 }
+// data => posts
+// option => theme configuration
+export default function Posts({ data, option }: AllPosts) {
+  //customize column
+  const col = option.gridOfPosts;
+  const gridDesktop = themeGrids('desktop', col.desktop);
+  const gridTablet = themeGrids('tablet', col.tablet);
+  const gridMobile = themeGrids('mobile', col.mobile);
 
-export default function Posts({ data }: AllPosts) {
+  // Route Configuration
+  const router = useRouter();
 
-  const grid = `grid grid-cols-${customize.home.gridOfPosts.mobile} md:grid-cols-${customize.home.gridOfPosts.desktop} md:gap-12 gap-6 my-8`
-  
+  // Detect Blog Base Path
+  const blogRegex = /\/blog.*/;
+  const blogPath = blogRegex.test(router.asPath);
+
   return (
     <>
       <div
-        className={grid}
+        className={`grid ${gridDesktop} ${gridTablet} ${gridMobile}  my-8`}
       >
         {data.map((post: any) => {
           return (
@@ -23,14 +37,19 @@ export default function Posts({ data }: AllPosts) {
           );
         })}
       </div>
-      <div className="flex w-full justify-end items-center h-40 pr-4">
-        <div className="w-20 h-[2px] bg-gray-500 mr-4"></div>
-        <Link href="/blog">
-          <a title="view all blog" className="text-onion">
-            View All
-          </a>
-        </Link>
-      </div>
+
+      {/* Show "View All" except "blog/*" path */}
+      {!blogPath && (
+        <div className="flex w-full justify-end items-center h-40 pr-4">
+          <div className="w-20 h-[2px] bg-gray-500 mr-4"></div>
+          <Link href="/blog">
+            <a title="view all blog" className="text-onion">
+              View All
+            </a>
+          </Link>
+        </div>
+      )}
+      {/* end */}
     </>
   );
 }
