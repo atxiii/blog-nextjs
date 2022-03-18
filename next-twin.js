@@ -25,7 +25,14 @@ module.exports = function withTwin() {
               options: {
                 sourceMaps: dev,
                 plugins: [
-                  [require.resolve('babel-plugin-macros')],
+                  [
+                    require.resolve('babel-plugin-macros'),
+                    {
+                      twin: {
+                        perest: 'emotion',
+                      },
+                    },
+                  ],
                   [
                     require.resolve('@babel/plugin-syntax-typescript'),
                     { isTSX: true },

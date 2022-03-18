@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import Link from 'next/link';
 import tw from 'twin.macro';
 const Item = styled.li`
-  ${tw`pl-0`}
+  ${tw`pl-0 my-3`}
 
   &.number {
     ${tw`hidden md:inline-block`}
@@ -18,7 +18,7 @@ const ItemLink = styled.a`
   ${tw`rounded-full no-underline! text-center inline-block border border-solid p-1 w-8 h-8 text-sm hover:border-b-onion hover:border-b-2`}
 
   &.current {
-    ${tw`bg-gray-100 `}
+    ${tw`bg-gray-100 text-black`}
   }
 `;
 
@@ -50,7 +50,7 @@ const Pagination = ({
   if (totalPages === 1) return null;
 
   return (
-    <nav className="flex justify-center my-0">
+    <nav className="flex justify-center my-20">
       <ul className="list-none m-0 p-0 flex">
         {totalPages > 20 && (
           <>

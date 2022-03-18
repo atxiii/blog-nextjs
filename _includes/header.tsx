@@ -5,14 +5,17 @@ const Header = () => {
     {
       name: 'Home',
       link: '/',
+      img: '/mockup/me.jpg',
     },
     {
       name: 'About',
       link: '/about',
+      img: '/mockup/rick.jpg',
     },
     {
       name: 'Blog',
       link: '/blog',
+      img: '/mockup/cover.jpg',
     },
   ];
   return (

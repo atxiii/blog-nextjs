@@ -2,6 +2,7 @@ import BlogLayout from '@layouts/blogLayout';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import { allBlogs } from '../../.contentlayer/generated';
 import type { Blog } from '../../.contentlayer/generated';
+import { IParam } from '@types';
 
 type BlogProps = {
   blog: Blog;
@@ -23,7 +24,7 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async ({ params }: { params: any }) => {
+export const getStaticProps = async ({ params }: IParam) => {
   const blog = allBlogs.find(p => p.slug === params.slug);
   return {
     props: {

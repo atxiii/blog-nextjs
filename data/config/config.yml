@@ -1,3 +1,4 @@
+url: 'localhost:3000'
 home:
   title: 'My Blog'
   description: 'This is a rick blog'
@@ -21,3 +22,10 @@ archive:
   postsPerPage: '2'
 
 footerText: ' Rick. All Rights Reserved.'
+
+openGraph:
+  type: 'website'
+  locale: 'id_ID'
+  site_name: 'MrCatDev'
+
+titleTemplate: '%s | MrCatDev'

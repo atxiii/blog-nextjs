@@ -7,6 +7,7 @@ export const Customize = defineDocumentType(() => ({
   contentType: 'data',
   filePathPattern: 'config/**/*.yml',
   fields: {
+    url: { type: 'string', required: true },
     home: { type: 'json' },
     title: { type: 'string' },
     description: { type: 'string' },
@@ -18,6 +19,11 @@ export const Customize = defineDocumentType(() => ({
     archive: { type: 'json' },
     postsSort: { type: 'string' },
     postsOrder: { type: 'string' },
+    openGraph: { type: 'json' },
+    type: { type: 'string' },
+    locale: { type: 'string' },
+    site_name: { type: 'string' },
+    titleTemplate: { type: 'string' },
   },
 }));
 
@@ -41,6 +47,17 @@ export const Blog = defineDocumentType(() => ({
     slug: {
       type: 'string',
       resolve: doc => doc._raw.sourceFileName.replace(/\.mdx$/, ''),
+    },
+    path: {
+      type: 'string',
+      resolve: doc => doc._raw.sourceFileDir,
+    },
+    imageUrl: {
+      type: 'string',
+      resolve: doc =>
+        `/images/${
+          doc._raw.sourceFileDir
+        }/${doc._raw.sourceFileName.replace(/\.mdx$/, '')}/${doc.cover}`,
     },
   },
 }));

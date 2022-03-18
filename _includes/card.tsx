@@ -3,9 +3,9 @@ import Link from 'next/link';
 const Card = ({ post }: any) => {
   return (
     <div className="p-5 shadow-lg from-white to-slate-50 bg-gradient-to-b  dark:from-gray-700 dark:to-gray-800">
-      {post.cover && (
+      {post.imageUrl && (
         <Image
-          src={post.cover}
+          src={post.imageUrl}
           width={300}
           height={200}
           layout="responsive"

@@ -20,3 +20,9 @@ export interface BlogLayoutProps {
     | null
     | undefined;
 }
+
+export interface IParam {
+  params: {
+    slug: string;
+  };
+}

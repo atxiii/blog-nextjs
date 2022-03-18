@@ -2,6 +2,7 @@ import { allBlogs } from '../../.contentlayer/generated';
 import type { Blog } from '../../.contentlayer/generated';
 import { allTags } from '_api';
 import Link from 'next/link';
+import { IParam } from 'types';
 type BlogProps = {
   blogs: Blog[];
   tag: string;
@@ -39,7 +40,7 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async ({ params }) => {
+export const getStaticProps = async ({ params }: IParam) => {
   const blogs = allBlogs.filter(p => p.tag.includes(params.slug));
 
   return {

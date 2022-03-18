@@ -1,25 +1,15 @@
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeCodeTitles from 'rehype-code-titles';
-import remarkExternalLinks from 'remark-external-links';
-import rehypeImgSize from 'rehype-img-size';
 import { Pluggable } from 'unified';
 import rehypePrism from 'rehype-prism-plus';
-import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
+import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis';
 
 const mdxOptions = {
-  remarkPlugins: [remarkExternalLinks, remarkGfm],
+  remarkPlugins: [remarkGfm],
   rehypePlugins: [
-    rehypeSlug,
     rehypeCodeTitles,
     rehypePrism,
-    rehypeAutolinkHeadings,
-    [
-      rehypeImgSize,
-      {
-        dir: 'public',
-      },
-    ],
+    rehypeAccessibleEmojis,
   ] as Pluggable[],
   compilers: [],
 };

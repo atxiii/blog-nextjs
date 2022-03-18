@@ -6,6 +6,7 @@ import Posts from '@includes/posts';
 import Tags from '@includes/tags';
 import { allTags, customize } from '_api';
 import { sort } from 'helper';
+
 interface IProps {
   //tags: [{ slug: string; id: string; title: string }];
   posts: Blog[];
@@ -24,10 +25,11 @@ const Home: NextPage<IProps> = ({ posts, tags, settings }: IProps) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const tags = allTags();
+  const tags = await allTags();
   const settings = customize.home;
 
   const blogPosts = allBlogs.filter((post: Blog) => post.type === 'Blog');
+
   const posts = sort(
     blogPosts,
     settings.postsSort,

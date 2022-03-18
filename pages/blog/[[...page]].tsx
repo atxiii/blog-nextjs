@@ -19,7 +19,7 @@ export default function ArchivePage({
   settings,
 }: IPosts) {
   return (
-    <div>
+    <div className="pb-20 block">
       <h1 className="text-5xl mb-10 mt-20 font-display">
         {settings.title}
       </h1>

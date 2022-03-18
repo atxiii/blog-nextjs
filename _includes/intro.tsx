@@ -5,7 +5,7 @@ import Social from './social';
 const Intro = () => {
   return (
     <section className="flex flex-wrap mt-8 intro relative">
-      <div className="left__side max-w-full md:w-1/3 flex sm:flex-1 sm:w-full sm:h-screen md:flex-none z-1 -z-50 md:z-50">
+      <div className="left__side max-w-full md:w-1/3 flex sm:flex-1 sm:w-full sm:h-screen md:flex-none -z-50">
         <div className="image md:ml-6 sm:ml-0 relative">
           <Image
             alt="me"

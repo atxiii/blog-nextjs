@@ -34,7 +34,8 @@
     "types/index.d.ts",
     "_includes/_document.js",
     ".contentlayer/generated",
-    "pages/articles/[[...page]].tsx"
+    "pages/articles/[[...page]].tsx",
+    "next-sitemap.js"
   ],
   "exclude": ["node_modules"]
 }
