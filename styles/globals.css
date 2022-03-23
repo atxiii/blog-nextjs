@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --cursor-size: 50px;
+}
+
+#cursor {
+  @apply fixed pointer-events-none mix-blend-difference;
+  top: calc(var(--cursor-size) * -0.5);
+  left: calc(var(--cursor-size) * -0.5);
+  filter: url(#circleSvg);
+}
+
+.cursor__shape {
+  @apply absolute top-0 left-0 bg-skyly dark:bg-gray-300 origin-center;
+  width: var(--cursor-size);
+  height: var(--cursor-size);
+  border-radius: 100%;
+}
+.circleSvg {
+  display: none;
+}
 p,
 span {
   @apply font-body;

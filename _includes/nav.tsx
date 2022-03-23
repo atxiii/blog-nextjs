@@ -59,17 +59,25 @@ const Navbar = (props: { links: Array<Links> }) => {
                   <a
                     onClick={handleMenu}
                     title={item.name}
-                    className="nav__link font-display pl-40 px-3 text-onion text-xl md:text-[10vw] md:leading-snug	 block cursor-pointer z-1"
+                    className="nav__link font-display pl-40 px-3 text-black text-xl md:text-[10vw] md:leading-snug	 block cursor-pointer z-1"
                   >
                     {item.name}
                   </a>
                 </Link>
                 <div className="marquee -z-50 ">
                   <div className="marquee__inner">
-                    <span className="font-display">{item.name}</span>
-                    <span className="font-display">{item.name}</span>
-                    <span className="font-display">{item.name}</span>
-                    <span className="font-display">{item.name}</span>
+                    <span className="font-display text-onion">
+                      {item.name}
+                    </span>
+                    <span className="font-display text-onion">
+                      {item.name}
+                    </span>
+                    <span className="font-display text-onion">
+                      {item.name}
+                    </span>
+                    <span className="font-display text-onion">
+                      {item.name}
+                    </span>
                   </div>
                 </div>
                 <figure className="nav___image fixed top-[10%] right-[10%] -z-50 opacity-0 skew-y-0  group-hover:skew-y-2 group-hover:-translate-y-3 translate-y-6 transition ease-in-out delay-150 duration-500">

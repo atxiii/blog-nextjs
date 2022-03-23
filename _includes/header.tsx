@@ -1,26 +1,10 @@
 import Navbar from './nav';
+import { customize } from '_api';
 
 const Header = () => {
-  const links = [
-    {
-      name: 'Home',
-      link: '/',
-      img: '/mockup/me.jpg',
-    },
-    {
-      name: 'About',
-      link: '/about',
-      img: '/mockup/rick.jpg',
-    },
-    {
-      name: 'Blog',
-      link: '/blog',
-      img: '/mockup/cover.jpg',
-    },
-  ];
   return (
     <header>
-      <Navbar links={links} />
+      <Navbar links={customize.menu} />
     </header>
   );
 };

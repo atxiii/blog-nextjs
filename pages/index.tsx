@@ -6,15 +6,9 @@ import Posts from '@includes/posts';
 import Tags from '@includes/tags';
 import { allTags, customize } from '_api';
 import { sort } from 'helper';
+import { IPosts } from '@types';
 
-interface IProps {
-  //tags: [{ slug: string; id: string; title: string }];
-  posts: Blog[];
-  tags: string[];
-  settings: Customize;
-}
-
-const Home: NextPage<IProps> = ({ posts, tags, settings }: IProps) => {
+const Home: NextPage<IPosts> = ({ posts, tags, settings }: IPosts) => {
   return (
     <>
       <Intro />

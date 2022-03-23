@@ -24,6 +24,10 @@ export const Customize = defineDocumentType(() => ({
     locale: { type: 'string' },
     site_name: { type: 'string' },
     titleTemplate: { type: 'string' },
+    menu: { type: 'json', required: true },
+    name: { type: 'string' },
+    link: { type: 'string' },
+    img: { type: 'string' },
   },
 }));
 
@@ -38,6 +42,7 @@ export const Blog = defineDocumentType(() => ({
     cover: { type: 'string' },
     tag: { type: 'json' },
     author: { type: 'string', required: true },
+    tableOfContent: { type: 'string' },
   },
   computedFields: {
     readingTime: {

@@ -4,7 +4,7 @@ import { allTags } from '_api';
 import { IPosts } from '@types';
 const Tag: NextPage<IPosts['tags']> = ({ tags }: IPosts['tags']) => {
   return (
-    <div>
+    <section>
       <h1 className="font-display text-xl md:text-4xl my-10">All Tags</h1>
       {tags.map((tag: string, key: Number) => {
         return (
@@ -15,7 +15,7 @@ const Tag: NextPage<IPosts['tags']> = ({ tags }: IPosts['tags']) => {
           </Link>
         );
       })}
-    </div>
+    </section>
   );
 };
 

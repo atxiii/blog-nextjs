@@ -1,7 +1,14 @@
 import { Blog, Customize } from 'contentlayer/generated';
-import { ReactChild, ReactFragment, ReactPortal, ReactNode } from 'react';
+import {
+  ReactChild,
+  ReactFragment,
+  ReactPortal,
+  ReactNode,
+  ReactElement,
+} from 'react';
 
 export interface IPosts {
+  blog: Blog;
   posts: Blog[];
   tags: any;
   settings: Customize;
@@ -11,14 +18,7 @@ export interface IPosts {
 
 export interface BlogLayoutProps {
   blog: Blog;
-  children:
-    | ReactNode
-    | boolean
-    | ReactChild
-    | ReactFragment
-    | ReactPortal
-    | null
-    | undefined;
+  children: ReactElement;
 }
 
 export interface IParam {

@@ -3,6 +3,7 @@ import { useMDXComponent } from 'next-contentlayer/hooks';
 import { allBlogs } from '../../.contentlayer/generated';
 import type { Blog } from '../../.contentlayer/generated';
 import { IParam } from '@types';
+import { MDXCompoenet } from '@includes/MDXComponent';
 
 type BlogProps = {
   blog: Blog;
@@ -10,9 +11,10 @@ type BlogProps = {
 
 export default function Article({ blog }: BlogProps) {
   const MdxContent = useMDXComponent(blog.body.code);
+
   return (
     <BlogLayout blog={blog}>
-      <MdxContent />
+      <MdxContent components={MDXCompoenet} />
     </BlogLayout>
   );
 }

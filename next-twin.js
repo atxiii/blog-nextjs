@@ -7,17 +7,18 @@ module.exports = function withTwin() {
       ...nextConfig,
 
       webpack(config, options) {
-        const { isServer, dev, dir } = options;
-        // replace your dir
+        const { dev } = options;
+
+        // replace your directories
         const componentsDir = path.resolve(__dirname, '_includes');
         const pagesDir = path.resolve(__dirname, 'pages');
-        const layout = path.resolve(__dirname, '_layout');
+        const layoutDir = path.resolve(__dirname, '_layout');
 
         config.module = config.module || {};
         config.module.rules = config.module.rules || [];
         config.module.rules.push({
           test: /\.(tsx|jsx)$/,
-          include: [componentsDir, pagesDir, layout],
+          include: [componentsDir, pagesDir, layoutDir],
           use: [
             options.defaultLoaders.babel,
             {
