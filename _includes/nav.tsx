@@ -10,7 +10,7 @@ interface Links {
   img: string;
 }
 
-const Navbar = (props: { links: Array<Links> }) => {
+const Navbar = ({ links }: { links: Array<Links> }) => {
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -28,7 +28,7 @@ const Navbar = (props: { links: Array<Links> }) => {
   if (!mounted) return null;
 
   return (
-    <nav className="nav mx-auto flex items-center containers">
+    <nav className="nav mx-auto flex items-center containers ">
       <Link href="/">
         <a title="home" className="logo mr-auto">
           <Image
@@ -49,7 +49,7 @@ const Navbar = (props: { links: Array<Links> }) => {
         } dark:bg-skyly`}
       >
         <ul className="pt-10 z-50">
-          {props.links.map((item, key) => {
+          {links.map((item, key) => {
             return (
               <li
                 key={key}
@@ -111,7 +111,6 @@ const Navbar = (props: { links: Array<Links> }) => {
         } dark:before:bg-gray-500 dark:after:bg-gray-500 cursor-pointer`}
         onClick={handleMenu}
       ></div>
-      <div className="absolute bg-red w-1 h-1"></div>
     </nav>
   );
 };

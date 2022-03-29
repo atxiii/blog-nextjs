@@ -16,8 +16,8 @@ export const RelatedPost = ({ tag, title }: Blog) => {
 
   return (
     <>
-      <section className="min-h-[200px] mt-[100%] relative">
-        <div className="rotateText absolute flex -rotate-180 -translate-x-10 h-fit text-onion text-2xl ">
+      <section className="min-h-[200px] md:mt-[100%] mt-10 relative">
+        <div className="md:rotate-text-vertical-rl rotate-text-none md:absolute flex md:-rotate-180 md:-translate-x-10 h-fit text-onion text-2xl ">
           Related Posts
         </div>
         <span className="h-[2px] w-20 mb-[5px] mr-[5px] block"></span>
@@ -29,7 +29,7 @@ export const RelatedPost = ({ tag, title }: Blog) => {
               <Link href={item.slug} key={item._id}>
                 <a className="text-md mb-2  underline underline-offset-1 block group">
                   {item.title}
-                  <figure className=" mix-blend-difference rounded-md absolute bottom-[110%] opacity-0 -translate-x-[140%]  transition ease-out-in duration-700 group-hover:opacity-100 group-hover:translate-x-[-20]  w-full  pr-10">
+                  <figure className="md:block hidden mix-blend-difference rounded-md absolute bottom-[110%] opacity-0 -translate-x-[140%]  transition ease-out-in duration-700 group-hover:opacity-100 group-hover:translate-x-[-20]  w-full  pr-10">
                     <Image
                       src={item.imageUrl}
                       alt={item.title}

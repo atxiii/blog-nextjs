@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import tw from 'twin.macro';
 
 interface Headings {
@@ -6,9 +5,12 @@ interface Headings {
   link: string;
   headNumber: string;
 }
+
+const TableOfContentWrapper = tw.section``;
 const ItemContainer = tw.ul``;
-const ItemLink = tw.a` block underline`;
+const ItemLink = tw.a` block underline dark:text-white! text-black!  `;
 const Item = tw.li`px-2 mb-2`;
+
 export const TableOfContent = ({ content }: { content: string }) => {
   const getHeadings = (source: any) => {
     const regex = /<h[0-6].*?\>(.*?)<\/.\d?>/g;
@@ -59,9 +61,9 @@ export const TableOfContent = ({ content }: { content: string }) => {
   const headings = getHeadings(content);
 
   return (
-    <section className="relatvie mt-20 block">
-      <div className="rotateText absolute flex -rotate-180 -translate-x-10 h-fit text-onion text-2xl ">
-        Table Of Content
+    <TableOfContentWrapper>
+      <div className="font-bold flex text-lg mb-5 font-display text-onion text-lg md:text-3xl">
+        Table Of Contents
       </div>
       <ItemContainer>
         {headings.map((item, key) => {
@@ -79,6 +81,6 @@ export const TableOfContent = ({ content }: { content: string }) => {
           );
         })}
       </ItemContainer>
-    </section>
+    </TableOfContentWrapper>
   );
 };

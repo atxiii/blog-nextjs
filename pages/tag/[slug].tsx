@@ -1,14 +1,14 @@
 import { allBlogs } from '../../.contentlayer/generated';
-import type { Blog } from '../../.contentlayer/generated';
 import { allTags } from '_api';
 import Link from 'next/link';
-import { IParam } from 'types';
-type BlogProps = {
-  blogs: Blog[];
-  tag: string;
-};
+import { IParam, IPosts } from 'types';
+import { GoBack } from '@includes/goBack';
+interface tagParams {
+  posts: IPosts['posts'];
+  tag: IParam;
+}
 
-export default function PageTag({ blogs, tag }: BlogProps) {
+export default function PageTag({ posts, tag }: tagParams) {
   return (
     <section>
       <h1 className="text-xl md:text-4xl capitalize font-display my-4">
@@ -16,19 +16,20 @@ export default function PageTag({ blogs, tag }: BlogProps) {
       </h1>
       <div className="w-full h-[2px] bg-onion my-3"></div>
       <ul className="marker:text-onion list-decimal list-outside pl-4">
-        {blogs.map(tag => {
+        {posts.map((item: any) => {
           return (
-            <li key={tag._id} className="py-3">
-              <Link href={'/blog/' + tag.slug}>
-                <a className="block text-lg">{tag.title}</a>
+            <li key={item._id} className="py-3">
+              <Link href={'/blog/' + item.slug}>
+                <a className="block text-lg">{item.title}</a>
               </Link>
               <p className="mb-3 text-gray-700 dark:text-gray-400">
-                {tag.description}
+                {item.description}
               </p>
             </li>
           );
         })}
       </ul>
+      <GoBack className="!mt-20" />
     </section>
   );
 }
@@ -41,11 +42,11 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }: IParam) => {
-  const blogs = allBlogs.filter(p => p.tag.includes(params.slug));
+  const posts = allBlogs.filter(p => p.tag.includes(params.slug));
 
   return {
     props: {
-      blogs,
+      posts,
       tag: params.slug,
     },
   };

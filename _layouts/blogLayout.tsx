@@ -1,19 +1,16 @@
 import { NextSeo } from 'next-seo';
 import { BlogLayoutProps } from '@types';
 import Image from 'next/image';
-import tw, { styled } from 'twin.macro';
+import tw, { styled, css } from 'twin.macro';
 import { formatDate } from 'helper';
 import { customize } from '_api';
-import { useRouter } from 'next/router';
 import { RelatedPost } from '@includes/relatedPost';
 import { TableOfContent } from '@includes/tableOfContent';
 import { renderToString } from 'react-dom/server';
+import { GoBack } from '@includes/goBack';
 
-const Line = tw.span`h-[2px] w-20 mb-[5px] mr-[5px] bg-onion inline-block`;
-const GoBack = tw.button`text-left mt-auto`;
-
-const ArticleContainer = tw.article`flex flex-wrap mt-28 mb-40`;
-const Details = tw.aside`md:w-1/3 w-full flex flex-col`;
+const ArticleContainer = tw.article`flex flex-wrap md:mt-28 mt-10 mb-40 px-5 md:px-0`;
+const Details = tw.aside`md:w-1/3 w-full flex flex-col order-2 md:order-none`;
 const titleCss = tw`text-onion dark:text-gray-100 font-display mt-8 mb-4 font-bold`;
 const Content = styled.section`
   ${tw`md:w-2/3 w-full text-lg`}
@@ -72,13 +69,12 @@ const Content = styled.section`
     ${tw`text-[18px]!`}
   }
 `;
-const ListContainer = tw.ul`flex flex-col`;
+const ListContainer = tw.ul`flex flex-col md:mt-0 mt-10`;
 const ListItem = tw.li`mb-5`;
 const ListItemLabel = tw.span`block text-gray-500 text-sm md:text-lg mb-0 font-display`;
 const Item = tw.span`block text-black text-lg md:text-xl dark:text-white`;
 
 const BlogLayout = ({ children, blog }: BlogLayoutProps) => {
-  const router = useRouter();
   const contentString = renderToString(children);
 
   return (
@@ -134,18 +130,16 @@ const BlogLayout = ({ children, blog }: BlogLayoutProps) => {
             </ListItem>
           </ListContainer>
 
+          <RelatedPost {...blog} />
+
+          <GoBack />
+        </Details>
+        <Content>
           {blog.tableOfContent === 'on' && (
             <TableOfContent content={contentString} />
           )}
-
-          <RelatedPost {...blog} />
-
-          <GoBack onClick={() => router.back()}>
-            <Line />
-            Back
-          </GoBack>
-        </Details>
-        <Content>{children}</Content>
+          {children}
+        </Content>
       </ArticleContainer>
     </>
   );

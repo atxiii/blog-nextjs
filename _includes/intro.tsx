@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import Social from './social';
-
+import { customize } from '_api';
 const Intro = () => {
   return (
-    <section className="flex flex-wrap mt-8 intro relative">
+    <section className="flex flex-wrap mt-8 intro relative z-0">
       <div className="left__side max-w-full md:w-1/3 flex sm:flex-1 sm:w-full sm:h-screen md:flex-none -z-50">
         <div className="image md:ml-6 sm:ml-0 relative">
           <Image
@@ -14,11 +14,11 @@ const Intro = () => {
             src="/mockup/me.jpg"
           />
         </div>
-        <Social />
+        <Social links={customize.social} />
       </div>
 
       <div className="right__side md:w-2/3 md:ml-12 sm:ml-0 mt-4 flex-1 -z-50">
-        <h1 className="font-display text-4xl leading-normal">
+        <h1 className="font-display text-4xl leading-normal ">
           Hi, <br />
           I’m Rick, a Business Consultant with over 10 years of experience.
         </h1>

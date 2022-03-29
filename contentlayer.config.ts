@@ -28,6 +28,7 @@ export const Customize = defineDocumentType(() => ({
     name: { type: 'string' },
     link: { type: 'string' },
     img: { type: 'string' },
+    social: { type: 'json', required: true },
   },
 }));
 

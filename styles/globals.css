@@ -7,7 +7,7 @@
 }
 
 #cursor {
-  @apply fixed pointer-events-none mix-blend-difference;
+  @apply fixed pointer-events-none mix-blend-difference hidden md:block;
   top: calc(var(--cursor-size) * -0.5);
   left: calc(var(--cursor-size) * -0.5);
   filter: url(#circleSvg);
@@ -213,10 +213,17 @@ body::before,
   height: auto;
 }
 
-.rotateText {
-  writing-mode: vertical-rl;
-  -webkit-writing-mode: vertical-rl;
+@layer utilities {
+  .rotate-text-vertical-rl {
+    writing-mode: vertical-rl;
+    -webkit-writing-mode: vertical-rl;
+  }
+  .rotate-text-none {
+    writing-mode: revert;
+    -webkit-writing-mode: revert;
+  }
 }
+
 .intro .image {
   width: calc(100vw - 25px);
   height: calc(100vw - 25px);

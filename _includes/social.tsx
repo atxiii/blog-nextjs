@@ -1,18 +1,21 @@
 import Link from 'next/link';
 
-const Social = () => {
-  const socialDetails = [
-    { name: 'twitter', link: '#twitter' },
-    { name: 'facebook', link: '#facebook' },
-    { name: 'github', link: '#git' },
-  ];
+interface Links {
+  name: string;
+  link: string;
+}
+
+const Social = ({ links }: { links: Array<Links> }) => {
   return (
-    <ul className="rotateText absolute flex rotate-180 translate-x-0">
-      {socialDetails.map(item => {
+    <ul className="rotate-text-vertical-rl z-50 absolute flex rotate-180 translate-x-0">
+      {links.map(item => {
         return (
           <li key={item.name}>
             <Link href={item.link}>
-              <a className="p-2 text-slate-500" title={item.name}>
+              <a
+                className="p-2 text-slate-500 cursor-pointer"
+                title={item.name}
+              >
                 {item.name}
               </a>
             </Link>
