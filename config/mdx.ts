@@ -6,13 +6,13 @@ import rehypeHighlight from 'rehype-highlight';
 import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis';
 import remarkParse from 'remark-parse';
 
-import theme from '../../code-hike-theme';
+import theme from '../code-hike-theme';
 
 import remarkGfm from 'remark-gfm';
 
 const mdxOptions = {
-  remarkPlugins: [remarkGfm, [remarkCodeHike, { theme }]],
-  rehypePlugins: [] as Pluggable[],
+  remarkPlugins: [remarkGfm],
+  rehypePlugins: [rehypePrism],
   compilers: [],
 };
 

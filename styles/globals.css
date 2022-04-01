@@ -11,6 +11,7 @@
   top: calc(var(--cursor-size) * -0.5);
   left: calc(var(--cursor-size) * -0.5);
   filter: url(#circleSvg);
+  z-index: 99;
 }
 
 .cursor__shape {
@@ -33,7 +34,7 @@ body::before,
   content: '';
   height: 300%;
   left: -50%;
-  opacity: 0.6;
+  opacity: 0.1;
   position: fixed;
   top: -100%;
   width: 300%;
@@ -75,10 +76,6 @@ body::before,
 
 .containers {
   @apply container;
-}
-
-.layout {
-  @apply flex flex-col min-h-screen;
 }
 
 .col-mobile-1 {
@@ -170,17 +167,14 @@ body::before,
 
 .menu__lines::before,
 .menu__lines::after {
+  @apply dark:bg-gray-300 bg-gray-900;
   content: '';
   position: absolute;
   width: 2.4rem;
   height: 3px;
-  background: #000;
   transition: all 1s cubic-bezier(1, -0.03, 0.03, 1.36) 0s;
 }
-.menu__lines.open::before,
-.menu__lines.open::after {
-  background: #ccc;
-}
+
 .menu__lines::before {
   top: 50%;
   left: 50%;

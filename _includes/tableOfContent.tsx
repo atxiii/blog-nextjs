@@ -1,4 +1,6 @@
+import React from 'react';
 import tw from 'twin.macro';
+import { decode } from 'html-entities';
 
 interface Headings {
   text: string;
@@ -7,7 +9,7 @@ interface Headings {
 }
 
 const TableOfContentWrapper = tw.section``;
-const ItemContainer = tw.ul``;
+const ItemContainer = tw.ul`mb-20 list-none!`;
 const ItemLink = tw.a` block underline dark:text-white! text-black!  `;
 const Item = tw.li`px-2 mb-2`;
 
@@ -43,7 +45,7 @@ export const TableOfContent = ({ content }: { content: string }) => {
 
         // Add Text
         if (groupIndex === 1) {
-          tagHead.text = match;
+          tagHead.text = decode(match);
 
           // Make Link
           tagHead.link = `#${tagHead.text
@@ -62,7 +64,7 @@ export const TableOfContent = ({ content }: { content: string }) => {
 
   return (
     <TableOfContentWrapper>
-      <div className="font-bold flex text-lg mb-5 font-display text-onion text-lg md:text-3xl">
+      <div className="font-bold flex text-lg mb-5 font-display text-black dark:text-white text-lg md:text-3xl">
         Table Of Contents
       </div>
       <ItemContainer>
@@ -71,9 +73,9 @@ export const TableOfContent = ({ content }: { content: string }) => {
             <Item key={key + item.link}>
               <ItemLink
                 href={item.link}
-                className={` ${
-                  +item.headNumber == 2 && 'pl-4 opacity-90'
-                } ${+item.headNumber >= 3 && 'pl-8 opacity-80'}`}
+                className={` ${+item.headNumber == 2 && 'pl-4'} ${
+                  +item.headNumber >= 3 && 'pl-8 '
+                }`}
               >
                 {item.text}
               </ItemLink>

@@ -41,9 +41,12 @@ export default function Posts({ data, option }: AllPosts) {
       {/* Show "View All" except "blog/*" path */}
       {!blogPath && (
         <div className="flex w-full justify-end items-center h-40 pr-4">
-          <div className="w-20 h-[2px] bg-gray-500 mr-4"></div>
+          <div className="w-20 h-[1px] bg-onion mr-4"></div>
           <Link href="/blog">
-            <a title="view all blog" className="text-onion">
+            <a
+              title="view all blog"
+              className="text-black dark:text-white"
+            >
               View All
             </a>
           </Link>

@@ -1,0 +1,358 @@
+---
+title: 'Turns your MDX files include yaml into data with contentLayer in Nextjs | #100DaysOfCode'
+description: This article is my experience in 6th day of 100DaysOfCode.
+publishedAt: '2-3-2022'
+tag: ['coding', 'music']
+cover: placeholder.png
+author: 'Hossein Shourabi'
+tableOfContent: 'on'
+---
+
+I have [another article](https://blog.mrcatdev.com/asset-modules-and-dependency-managment-help-me-to-make-a-site-theme-for-bloggers-in-this-journey-or-100daysofcode) that I shown how we can turned md files into data with features of webpack5 in the Nextjs. In this Article, I want to work with [contentLayer library](https://github.com/contentlayerdev/contentlayer) for turn mdx files into data.
+
+> This article is my experience in 6th day of 100DaysOfCode.
+
+## What's MDX?
+
+[MDX](https://mdxjs.com/) allows you to use JSX in your markdown content.
+
+## Why contentLayer?
+
+![contentLayer](https://cdn.hashnode.com/res/hashnode/image/upload/v1645821443011/qK4FoxbPw.png)
+One of reason that I'm using contentLayer is that it supported content sources like:
+
+- Local content (Markdown, MDX, JSON, YAML)
+- Contentful
+- Sanity (experimental)
+
+you can read other contentLayer features [here!](https://github.com/contentlayerdev/contentlayer)
+
+## Installation:
+
+1- First thing first, we need install it:
+
+```js
+npm install contentlayer next-contentlayer
+
+```
+
+2- create `contentlayer.config.ts` file in the root directory:
+
+```js
+touch contentlayer.config.ts
+```
+
+3- open `contentlayer.config.ts` and import defineDocumentType and makeSource functions from 'contentlayer/source-files'.
+
+```js
+import { defineDocumentType, makeSource } from 'contentlayer/source-files';
+```
+
+## Configuration:
+
+### Define Document Type
+
+We need to define document type in contentLayer configuration. By this way we declare:
+
+- Content Type (Are files mdx, JSON or md ?),
+- Yaml front matter fields,
+- File Path
+- and rest data that you need to compute for your document ( like reading time )
+
+For example, this is a document type in my project:
+
+```js
+export const Blog = defineDocumentType(() => ({
+  name: 'Blog',
+  contentType: 'mdx',
+  filePathPattern: `blogs/**/*.mdx`,
+  fields: {
+    title: { type: 'string', required: true },
+    publishedAt: { type: 'string', required: true },
+    description: { type: 'string', required: true },
+    cover: { type: 'string' },
+    tag: { type: 'string' },
+  },
+  computedFields: {
+    readingTime: {
+      type: 'json',
+      resolve: doc => readingTime(doc.body.raw),
+    },
+    slug: {
+      type: 'string',
+      resolve: doc => doc._raw.sourceFileName.replace(/\.mdx$/, ''),
+    },
+  },
+}));
+```
+
+#### Properties in DocumentType:
+
+- **name**
+
+  you maybe have several document type like articles, notes, blog and etc. so you need to decalare a name for them.
+
+  'name' property will be name of your document type. The below image shows document type 'Blog' after generating
+  ![name.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1645819718885/G16voV96F.png)
+
+- **contentType**
+
+  what's your content type? JSON, MD, MDX? By this property you can set your content type. This property is not exsit in before version 0.1.0. it was `bodyType` instead of `contentType`.
+
+  ![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1645820325152/BJWOXJIqt.png)
+
+- **filePathPattern**
+
+Where are your files? you can write down your pattern here, don't need consider the parent of directory. for example if your files located on `_posts/blog/hello-world.mdx` you don't need consider `_posts` here. we can declare the parent directory in `contentDirPath` in the `makeSource` function.
+
+As you can see my mdx files located under blogs. so I've used this pattern:
+![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1645824012461/p-thoEvPq.png)
+
+- **fields**
+
+  I like [yaml](https://yaml.org/) because it is a human-friendly data serialization language for all programming languages. I usually used yaml for maintaining metadata in blog posts. since, the content type of my blog posts is `mdx` and [MDX dosen't support yaml by default](https://mdxjs.com/guides/frontmatter/), the contentLayer has been resolved this issue for us. just we need declare our data in `fields' property.
+
+  ![fields.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1645825524325/7PSHjJsa3.png)
+
+- **computedFields**
+
+  Do you want add some cool feature to your data? or Do you want calculate some thing before generating data? this property helps you that implement your requirement.
+
+  In this case, we add slug and reading time to data:
+
+  for reading time, we need [install the package](https://www.npmjs.com/package/reading-time) and import it to `contentlayer.config.ts`
+
+  ```js
+  npm i reading-time
+  ```
+
+  ![computedFields](https://cdn.hashnode.com/res/hashnode/image/upload/v1645825909452/zEKDwAv5k.png)
+
+  > **NOTE:**
+  > You can define several document type in contentLayer, just copy your document type with unique name and edit it.
+
+### Make Source
+
+It's time that we provide the documents to generating. The function `makeSource` will helps to make it. we already imported it in `contentlayer.config.ts`. this function takes an object with several property that we need to fill them.
+
+1. contentDirPath
+2. documentTypes
+3. mdx
+
+#### Properties in MakeSource
+
+- **contentDirPath**
+
+We add the parent of posts directory into `contentDirPath` property:
+
+    ![contentDirPath](https://cdn.hashnode.com/res/hashnode/image/upload/v1645827074598/Go6WefBDq.png)
+
+- **documentTypes**
+
+  We add our doucmetTypes that already we defined them in `documentTypes` property. Just we need push their name to documentTypes array, if we have several document types. In this case we have one document type.
+
+  ![documentTypes](https://cdn.hashnode.com/res/hashnode/image/upload/v1645827831475/Ynoz8U4Rq.png)
+
+- **mdx**
+
+  The MDX has several plugins that helps to make awesome features to our blog. like `remark` and `rehype`. Also these plugins have their plugins 😧 . for example for `remark` we have `remarkGfm` and for `rehype` we have `rehype-highlight`.
+
+  Anyway the mdx property has specific properties for `remarkPlugins` and `rehypePlugins` that we can add the plugins to them.
+
+  ![mdx](https://cdn.hashnode.com/res/hashnode/image/upload/v1645829784758/1h7-Au9bp.png)
+
+Great, So far we provide our configuration for generating blog posts.
+
+```
+
+// contentlayer.config.ts
+import { defineDocumentType, makeSource } from 'contentlayer/source-files';
+import mdxOptions from './config/mdx';
+import readingTime from 'reading-time';
+
+export const Blog = defineDocumentType(() => ({
+  name: 'Blog',
+  contentType: 'mdx',
+  filePathPattern: `blogs/**/*.mdx`,
+  fields: {
+    title: { type: 'string', required: true },
+    publishedAt: { type: 'string', required: true },
+    description: { type: 'string', required: true },
+    cover: { type: 'string' },
+    tag: { type: 'json' },
+  },
+  computedFields: {
+    readingTime: {
+      type: 'json',
+      resolve: doc => readingTime(doc.body.raw),
+    },
+    slug: {
+      type: 'string',
+      resolve: doc => doc._raw.sourceFileName.replace(/\.mdx$/, ''),
+    },
+  },
+}));
+
+export default makeSource({
+  contentDirPath: '_posts',
+  documentTypes: [Blog],
+  mdx: mdxOptions,
+});
+
+```
+
+and mdxOptions is:
+
+```
+
+// config/md.ts
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeCodeTitles from 'rehype-code-titles';
+import remarkExternalLinks from 'remark-external-links';
+import rehypeImgSize from 'rehype-img-size';
+import { Pluggable } from 'unified';
+import rehypePrism from 'rehype-prism-plus';
+import rehypeSlug from 'rehype-slug';
+import remarkGfm from 'remark-gfm';
+
+const mdxOptions = {
+remarkPlugins: [remarkExternalLinks, remarkGfm],
+rehypePlugins: [
+rehypeSlug,
+rehypeCodeTitles,
+rehypePrism,
+rehypeAutolinkHeadings,
+[
+rehypeImgSize,
+{
+dir: 'public',
+},
+],
+] as Pluggable[],
+compilers: [],
+};
+
+export default mdxOptions;
+```
+
+## How the contentLayer provides the data?
+
+![contentLayer](https://cdn.hashnode.com/res/hashnode/image/upload/v1645906971247/omxgPg-Jl.png)
+
+when we start our server, the contentLayer will Generate documents in .contentlayer directory:
+
+![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1645907216111/ASVS3QaSR.png)
+
+For this case, we have this tree structure after `npm run dev`
+
+```
+.contentlayer
+├── generated
+│   ├── Blog
+│   │   ├── blogs__javascripts__first-blog.mdx.json
+│   │   ├── blogs__javascripts__my-blog.mdx.json
+│   │   ├── blogs__javascripts__my.mdx.json
+│   │   ├── blogs__javascripts__welcome.mdx.json
+│   │   └── blogs__my.mdx.json
+│   ├── allBlogs.mjs
+│   ├── index.d.ts
+│   ├── index.mjs
+│   └── types.d.ts
+└── package.json
+
+```
+
+The contentLayer converted the blog posts to json data that we can use them easly. for example for my-blog.mdx, we have this data:
+
+```
+{
+  "title": "My blog",
+  "publishedAt": "2-4-2022",
+  "description": "You can see the my blog here",
+  "cover": "",
+  "tag": [
+    "people",
+    "music"
+  ],
+  "body": {
+    "raw": "\n# My blog\n",
+    "code": "var Component=(()=>{var p=Object.create;var r=Object.defineProperty;var d=Object.getOwnPropertyDescriptor;var h=Object.getOwnPropertyNames;var u=Object.getPrototypeOf,x=Object.prototype.hasOwnProperty;var i=e=>r(e,\"__esModule\",{value:!0});var b=(e,t)=>()=>(t||e((t={exports:{}}).exports,t),t.exports),g=(e,t)=>{for(var n in t)r(e,n,{get:t[n],enumerable:!0})},c=(e,t,n,s)=>{if(t&&typeof t==\"object\"||typeof t==\"function\")for(let a of h(t))!x.call(e,a)&&(n||a!==\"default\")&&r(e,a,{get:()=>t[a],enumerable:!(s=d(t,a))||s.enumerable});return e},j=(e,t)=>c(i(r(e!=null?p(u(e)):{},\"default\",!t&&e&&e.__esModule?{get:()=>e.default,enumerable:!0}:{value:e,enumerable:!0})),e),f=(e=>(t,n)=>e&&e.get(t)||(n=c(i({}),t,1),e&&e.set(t,n),n))(typeof WeakMap!=\"undefined\"?new WeakMap:0);var m=b((O,l)=>{l.exports=_jsx_runtime});var C={};g(C,{default:()=>M,frontmatter:()=>y});var o=j(m()),y={title:\"My blog\",description:\"You can see the my blog here\",publishedAt:\"2-4-2022\",tag:[\"people\",\"music\"],cover:\"\"};function _(e={}){let{wrapper:t}=e.components||{};return t?(0,o.jsx)(t,Object.assign({},e,{children:(0,o.jsx)(n,{})})):n();function n(){let s=Object.assign({h1:\"h1\",a:\"a\",span:\"span\"},e.components);return(0,o.jsxs)(s.h1,{id:\"my-blog\",children:[(0,o.jsx)(s.a,{\"aria-hidden\":\"true\",tabIndex:\"-1\",href:\"#my-blog\",children:(0,o.jsx)(s.span,{className:\"icon icon-link\"})}),\"My blog\"]})}}var M=_;return f(C);})();\n;return Component;"
+  },
+  "_id": "blogs/javascripts/my-blog.mdx",
+  "_raw": {
+    "sourceFilePath": "blogs/javascripts/my-blog.mdx",
+    "sourceFileName": "my-blog.mdx",
+    "sourceFileDir": "blogs/javascripts",
+    "contentType": "mdx",
+    "flattenedPath": "blogs/javascripts/my-blog"
+  },
+  "type": "Blog",
+  "readingTime": {
+    "text": "1 min read",
+    "minutes": 0.015,
+    "time": 900,
+    "words": 3
+  },
+  "slug": "my-blog"
+}
+```
+
+Since, our document type is `.mdx`, in `body` property we have two keys : `raw` and `code` that we can pass `code` to MDXContent function in NextJs. we will have `html` instead `code` if our document type is `.md`.
+
+## How to import the "Blog" data to files and use it?
+
+All blogs and Type of Blog are in the `.contentlayer/generated` directory. so for import we have:
+
+```
+import { allBlogs } from '../.contentlayer/generated';
+import type { Blog } from '../.contentlayer/generated';
+```
+
+then you can use `allBlogs` as an array in function `getStaticProps` in nextjs:
+
+```
+// pages/blog/[slug].tsx
+import BlogLayout from '@layouts/blog';
+import { useMDXComponent } from 'next-contentlayer/hooks';
+import { allBlogs } from '../../.contentlayer/generated';
+import type { Blog } from '../../.contentlayer/generated';
+type BlogProps = {
+  blog: Blog;
+};
+
+export default function Blog({ blog }: BlogProps) {
+  const Component = useMDXComponent(blog.body.code);
+  return (
+    <BlogLayout blog={blog}>
+      <Component />
+    </BlogLayout>
+  );
+}
+
+export const getStaticPaths = async () => {
+  return {
+    paths: allBlogs.map(p => ({ params: { slug: p.slug } })),
+    fallback: false,
+  };
+};
+
+export const getStaticProps = async ({ params }) => {
+  const blog = allBlogs.find(p => p.slug === params.slug);
+  return {
+    props: {
+      blog,
+    },
+  };
+};
+
+
+```
+
+## Reference
+
+- [ContentLayer](https://github.com/contentlayerdev/contentlayer/releases)
+- [MDX](https://mdxjs.com/)
+
+## Thank you for reading!
+
+Thank you for reading my blog. Feel free to subscribe to my weekly newsletter.

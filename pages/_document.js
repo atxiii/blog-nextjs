@@ -10,7 +10,7 @@ class MyDocument extends Document {
             rel="stylesheet"
           ></link>
         </Head>
-        <body className="dark:bg-skyly flex flex-col h-full">
+        <body className="dark:bg-skyly flex flex-col h-full overflow-x-hidden">
           <Main />
           <NextScript />
         </body>

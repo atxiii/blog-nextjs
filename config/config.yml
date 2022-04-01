@@ -9,8 +9,8 @@ home:
     tablet: '2'
     desktop: '2'
   postsPerPage: '4'
-  postsOrder: 'title'
-  postsSort: 'asc'
+  postsOrder: 'date'
+  postsSort: 'DESC'
 
 # Archive Configuration
 archive:

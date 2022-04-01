@@ -1,5 +1,5 @@
 import { defineDocumentType, makeSource } from 'contentlayer/source-files';
-import mdxOptions from './data/config/mdx';
+import mdxOptions from './config/mdx';
 import readingTime from 'reading-time';
 
 export const Customize = defineDocumentType(() => ({
@@ -69,7 +69,8 @@ export const Blog = defineDocumentType(() => ({
 }));
 
 export default makeSource({
-  contentDirPath: 'data',
+  contentDirPath: '.',
+  contentDirInclude: ['blogs', 'config'],
   documentTypes: [Blog, Customize],
   mdx: mdxOptions,
 });

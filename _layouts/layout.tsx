@@ -4,15 +4,9 @@ import Footer from '@includes/footer';
 const Layout = (props: any) => {
   return (
     <>
-      <div className="layout" data-barba="wrapper">
+      <div className="flex flex-col min-h-screen">
         <Header />
-        <main
-          className="containers"
-          data-barba="container"
-          data-barba-namespace="home"
-        >
-          {props.children}
-        </main>
+        <main className="container z-40">{props.children}</main>
         <Footer />
       </div>
     </>

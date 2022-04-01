@@ -1,4 +1,4 @@
-import { allBlogs, allCustomizes } from '.contentlayer/generated';
+import { allBlogs, allCustomizes } from 'contentlayer/generated';
 
 export const allTags = () => {
   const tags: string[] = [];

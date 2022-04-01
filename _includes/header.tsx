@@ -5,9 +5,6 @@ const Header = () => {
   return (
     <header>
       <Navbar links={customize.menu} />
-      <div className="containers">
-        <span className="h-[2px] w-full bg-onion block"></span>
-      </div>
     </header>
   );
 };

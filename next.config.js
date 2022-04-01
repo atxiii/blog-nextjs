@@ -11,7 +11,7 @@ const nextConfig = {
   },
 };
 
-const contentLayer = withContentlayer()({
+const contentLayer = withContentlayer({
   nextConfig,
 });
 

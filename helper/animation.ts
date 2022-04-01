@@ -44,6 +44,7 @@ function hide(htmlElement: HTMLElement) {
 export const initAnimation = () => {
   gsap.registerPlugin(ScrollTrigger);
 
+  // Reveal
   gsap.utils.toArray('.gs_reveal').forEach(function (htmlElement: any) {
     hide(htmlElement); // assure that the element is hidden when scrolled into view
 
@@ -53,11 +54,44 @@ export const initAnimation = () => {
         animateFrom(htmlElement, 1);
       },
       onEnterBack: function () {
-        animateFrom(htmlElement, -1);
+        animateFrom(htmlElement, -0.2);
       },
       onLeave: function () {
         hide(htmlElement);
       }, // assure that the element is hidden when scrolled into view
+    });
+  });
+
+  // Parallax
+  gsap.utils.toArray('img.parallax').forEach((section: any, i) => {
+    gsap.fromTo(
+      section,
+      {
+        y: -150,
+      },
+      {
+        scrollTrigger: {
+          trigger: section.parentElement,
+          start: 'top 80%',
+          end: 'bottom 20%',
+          scrub: 0.2,
+          markers: false,
+        },
+        y: 0,
+        ease: 'Power3.inOut',
+      },
+    );
+  });
+
+  gsap.utils.toArray('.hero_cover').forEach((cover: any, i) => {
+    gsap.to(cover, {
+      scrollTrigger: {
+        trigger: cover.parentElement,
+        start: 'top 60%',
+        end: 'bottom 20%',
+        scrub: 0.1,
+      },
+      width: '100%',
     });
   });
 };
