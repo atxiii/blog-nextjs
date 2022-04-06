@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { customize } from '_api';
 import tw from 'twin.macro';
 import { useEffect } from 'react';
-import { cursor } from 'helper/cursor';
+import { cursor } from 'helper/animations/cursor';
 const Footer = () => {
   useEffect(() => {
     cursor();

@@ -1,11 +1,11 @@
 import { formatDate } from 'helper/util';
 import Image from 'next/image';
 import Link from 'next/link';
-import { initAnimation } from 'helper/animation';
+import { revealAnimation, imageAnimation } from 'helper';
 import { useEffect } from 'react';
 const Card = ({ post }: any) => {
   useEffect(() => {
-    initAnimation();
+    revealAnimation();
   });
 
   return (

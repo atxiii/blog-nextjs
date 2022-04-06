@@ -1,4 +1,4 @@
-import type { Blog, Customize } from '../.contentlayer/generated';
+import type { Blog, Customize } from 'contentlayer/generated';
 import Card from './card';
 import Link from 'next/link';
 import { themeGrids } from 'helper';

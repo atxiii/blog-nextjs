@@ -41,14 +41,15 @@ function hide(htmlElement: HTMLElement) {
   gsap.set(htmlElement, { autoAlpha: 0 });
 }
 
-export const initAnimation = () => {
+export const revealAnimation = () => {
   gsap.registerPlugin(ScrollTrigger);
 
+  let reveal: any;
   // Reveal
   gsap.utils.toArray('.gs_reveal').forEach(function (htmlElement: any) {
     hide(htmlElement); // assure that the element is hidden when scrolled into view
 
-    ScrollTrigger.create({
+    reveal = ScrollTrigger.create({
       trigger: htmlElement,
       onEnter: function () {
         animateFrom(htmlElement, 1);
@@ -62,36 +63,7 @@ export const initAnimation = () => {
     });
   });
 
-  // Parallax
-  gsap.utils.toArray('img.parallax').forEach((section: any, i) => {
-    gsap.fromTo(
-      section,
-      {
-        y: -150,
-      },
-      {
-        scrollTrigger: {
-          trigger: section.parentElement,
-          start: 'top 80%',
-          end: 'bottom 20%',
-          scrub: 0.2,
-          markers: false,
-        },
-        y: 0,
-        ease: 'Power3.inOut',
-      },
-    );
-  });
-
-  gsap.utils.toArray('.hero_cover').forEach((cover: any, i) => {
-    gsap.to(cover, {
-      scrollTrigger: {
-        trigger: cover.parentElement,
-        start: 'top 60%',
-        end: 'bottom 20%',
-        scrub: 0.1,
-      },
-      width: '100%',
-    });
-  });
+  return () => {
+    reveal.kill();
+  };
 };

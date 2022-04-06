@@ -6,7 +6,7 @@ import { GoBack } from '@includes/goBack';
 import { formatDate } from 'helper/util';
 import tw, { styled } from 'twin.macro';
 import { useEffect } from 'react';
-import { initAnimation } from 'helper/animation';
+import { revealAnimation } from 'helper/animations/reveals';
 interface tagParams {
   posts: IPosts['posts'];
   tag: IParam;
@@ -19,7 +19,7 @@ const Tags = tw.ul`${beforeDefualt} before:content-['Tags']`;
 const Published = tw.time`${beforeDefualt} before:content-['Published']`;
 export default function PageTag({ posts, tag }: tagParams) {
   useEffect(() => {
-    initAnimation();
+    revealAnimation();
   });
   return (
     <section className="gs_reveal mt-40">

@@ -1,7 +1,7 @@
 import type { NextPage, GetStaticProps } from 'next';
 import Intro from '@includes/intro';
-import { allBlogs } from '../.contentlayer/generated';
-import type { Blog, Customize } from '../.contentlayer/generated';
+import { allBlogs } from 'contentlayer/generated';
+import type { Blog, Customize } from 'contentlayer/generated';
 import Posts from '@includes/posts';
 import Tags from '@includes/tags';
 import { allTags, customize } from '_api';

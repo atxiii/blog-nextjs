@@ -1,7 +1,7 @@
 import BlogLayout from '@layouts/blogLayout';
 import { useMDXComponent } from 'next-contentlayer/hooks';
-import { allBlogs } from '../../.contentlayer/generated';
-import type { Blog } from '../../.contentlayer/generated';
+import { allBlogs } from 'contentlayer/generated';
+import type { Blog } from 'contentlayer/generated';
 import { IParam } from '@types';
 import { MDXCompoenet } from '@includes/MDXComponent';
 
