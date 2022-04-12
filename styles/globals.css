@@ -27,8 +27,7 @@ p,
 span {
   @apply font-body;
 }
-body::before,
-.nav__menu::before {
+body::before {
   animation: grain 8s steps(10) infinite;
   background-image: url('/noise.png');
   content: '';

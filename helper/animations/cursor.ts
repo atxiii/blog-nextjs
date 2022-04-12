@@ -6,10 +6,9 @@ let mouseX = 0;
 let mouseY = 0;
 
 let allCursors: any[];
-
 let cursorHistory = Array(TAIL).fill({ x: 0, y: 0 });
 
-export const cursor = () => {
+export const customCursor = () => {
   document.addEventListener('mousemove', onMouseMove, false);
   init();
   update();
@@ -18,26 +17,33 @@ export const cursor = () => {
 function onMouseMove(event: MouseEvent) {
   mouseX = event.clientX;
   mouseY = event.clientY;
+  const skill = document.querySelector('.skill li');
+  const cursor = document.getElementById('cursor');
+  skill?.addEventListener('mouseenter', () => {
+    cursor?.classList.add('skillActive');
+    console.log(cursor);
+  });
 }
 
 function init() {
   if (cursorStatus.mode) return;
 
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" class="circleSvg" version="1.1" width="100%">
+  const svg = `
+<svg xmlns="http://www.w3.org/2000/svg" class="circleSvg" version="1.1" width="100%">
   <defs>
-      <filter id="circleSvg">
-          <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"></feGaussianBlur>
-          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 35 -15" result="goo"></feColorMatrix>
-          <feComposite in="SourceGraphic" in2="circleSvg" operator="atop"></feComposite>
-      </filter>
+    <filter id="circleSvg">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"></feGaussianBlur>
+        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 35 -15" result="goo"></feColorMatrix>
+        <feComposite in="SourceGraphic" in2="circleSvg" operator="atop"></feComposite>
+    </filter>
   </defs>
-</svg>`;
+</svg>
+`;
 
   document.body.insertAdjacentHTML('beforeend', svg);
+  let cursor = document.getElementById('cursor');
 
   cursorStatus.mode = true;
-
-  let cursor = document.getElementById('cursor');
 
   if (!cursor) {
     cursor = document.createElement('div');

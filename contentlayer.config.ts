@@ -8,6 +8,7 @@ export const Customize = defineDocumentType(() => ({
   filePathPattern: 'config/**/*.yml',
   fields: {
     url: { type: 'string', required: true },
+    darkMode: { type: 'string', required: true },
     home: { type: 'json' },
     title: { type: 'string' },
     description: { type: 'string' },

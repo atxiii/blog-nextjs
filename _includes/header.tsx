@@ -1,10 +1,10 @@
-import Navbar from './nav';
+import NavbarSimple from './nav2';
 import { customize } from '_api';
 
 const Header = () => {
   return (
     <header>
-      <Navbar links={customize.menu} />
+      <NavbarSimple links={customize.menu} />
     </header>
   );
 };

@@ -7,23 +7,24 @@ import { formatDate } from 'helper/util';
 import tw, { styled } from 'twin.macro';
 import { useEffect } from 'react';
 import { revealAnimation } from 'helper/animations/reveals';
+import { LinkIcon } from '@includes/Icons/linkIcon';
 interface tagParams {
   posts: IPosts['posts'];
   tag: IParam;
 }
 const beforeDefualt = `relative text-sm before:text-skyly before:absolute before:-top-11`;
 
-const ReadingTIME = tw.p`${beforeDefualt} before:content-['Reading']`;
-const BlogTitle = tw.a`${beforeDefualt} before:content-['Title'] before:text-sm block text-lg col-start-2 col-span-8`;
-const Tags = tw.ul`${beforeDefualt} before:content-['Tags']`;
-const Published = tw.time`${beforeDefualt} before:content-['Published']`;
+const ReadingTIME = tw.p`${beforeDefualt} before:content-['Reading'] md:col-span-1 col-span-3`;
+const BlogTitle = tw.a`${beforeDefualt} before:content-['Title'] before:text-sm block text-lg md:col-start-2 md:col-span-8 col-start-4 col-span-12`;
+const Tags = tw.ul`${beforeDefualt} md:before:content-['Tags'] col-span-3 md:col-span-1 col-start-1`;
+const Published = tw.time`${beforeDefualt} md:before:content-['Published'] col-start-4  col-span-8 md:col-span-1 self-end`;
 export default function PageTag({ posts, tag }: tagParams) {
   useEffect(() => {
     revealAnimation();
   });
   return (
-    <section className="gs_reveal mt-40">
-      <h1 className="text-xl md:text-7xl capitalize font-display mt-4 mb-20 text-center">
+    <section className="gs_reveal md:mt-40 mt-20">
+      <h1 className="text-4xl md:text-7xl capitalize font-display mt-4 mb-20 text-center">
         {tag}'s Post
       </h1>
 
@@ -45,7 +46,9 @@ export default function PageTag({ posts, tag }: tagParams) {
 
                 <Tags className={beforeStatus}>
                   {item.tag.map((list: any) => {
-                    return <li>{list}</li>;
+                    return (
+                      <li key={'tag_' + list.replace(' ', '_')}>{list}</li>
+                    );
                   })}
                 </Tags>
 
@@ -57,19 +60,8 @@ export default function PageTag({ posts, tag }: tagParams) {
                 </Published>
 
                 <Link href={'/blog/' + item.slug}>
-                  <a className="flex justify-center">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="currentColor"
-                      viewBox="0 0 10 10"
-                      className="w-3"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M7.31 1.57H.56V0H10v9.44H8.43V2.7L1.1 10 0 8.89l7.31-7.32z"
-                        clip-rule="evenodd"
-                      ></path>
-                    </svg>
+                  <a className="flex justify-center md:self-center self-end">
+                    <LinkIcon />
                   </a>
                 </Link>
               </article>

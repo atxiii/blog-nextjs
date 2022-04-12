@@ -32,10 +32,12 @@ export const imageAnimation = () => {
   gsap.utils.toArray('.hero_cover').forEach((cover: any, i) => {
     heroCover = gsap.to(cover, {
       scrollTrigger: {
-        trigger: cover.parentElement,
-        start: 'top 60%',
-        end: 'bottom 20%',
-        scrub: 0.1,
+        trigger: cover,
+        start: 'middle 60%',
+        end: '-=40',
+        scrub: 1,
+        preventOverlaps: true,
+        fastScrollEnd: true,
       },
       width: '100%',
     });

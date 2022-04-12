@@ -2,10 +2,10 @@ import Link from 'next/link';
 import { customize } from '_api';
 import tw from 'twin.macro';
 import { useEffect } from 'react';
-import { cursor } from 'helper/animations/cursor';
+import { customCursor } from 'helper/animations/cursor';
 const Footer = () => {
   useEffect(() => {
-    cursor();
+    customCursor();
   });
 
   const date = new Date();
