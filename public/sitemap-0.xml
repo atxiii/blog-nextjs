@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>http://localhost:3000</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-03-12T18:29:57.101Z</lastmod></url>
-<url><loc>http://localhost:3000/about</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-03-12T18:29:57.102Z</lastmod></url>
-<url><loc>http://localhost:3000/tag</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-03-12T18:29:57.102Z</lastmod></url>
-<url><loc>http://localhost:3000/tag/people</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-03-12T18:29:57.102Z</lastmod></url>
-<url><loc>http://localhost:3000/tag/sport</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-03-12T18:29:57.102Z</lastmod></url>
-<url><loc>http://localhost:3000/tag/music</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-03-12T18:29:57.102Z</lastmod></url>
-<url><loc>http://localhost:3000/tag/coding</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-03-12T18:29:57.102Z</lastmod></url>
-<url><loc>http://localhost:3000/blog/sample-1</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-03-12T18:29:57.102Z</lastmod></url>
-<url><loc>http://localhost:3000/blog/sample-2</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-03-12T18:29:57.102Z</lastmod></url>
-<url><loc>http://localhost:3000/blog/sample-3</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-03-12T18:29:57.102Z</lastmod></url>
-<url><loc>http://localhost:3000/blog/sample-4</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-03-12T18:29:57.102Z</lastmod></url>
-<url><loc>http://localhost:3000/blog</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-03-12T18:29:57.102Z</lastmod></url>
-<url><loc>http://localhost:3000/blog/page-2</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-03-12T18:29:57.102Z</lastmod></url>
+<url><loc>http://localhost:3000</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-04-12T18:19:59.226Z</lastmod></url>
+<url><loc>http://localhost:3000/about</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-04-12T18:19:59.226Z</lastmod></url>
+<url><loc>http://localhost:3000/tag</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-04-12T18:19:59.226Z</lastmod></url>
+<url><loc>http://localhost:3000/tag/people</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-04-12T18:19:59.226Z</lastmod></url>
+<url><loc>http://localhost:3000/tag/sport</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-04-12T18:19:59.226Z</lastmod></url>
+<url><loc>http://localhost:3000/tag/music</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-04-12T18:19:59.226Z</lastmod></url>
+<url><loc>http://localhost:3000/tag/coding</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-04-12T18:19:59.226Z</lastmod></url>
+<url><loc>http://localhost:3000/blog</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-04-12T18:19:59.226Z</lastmod></url>
+<url><loc>http://localhost:3000/blog/sample-1</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-04-12T18:19:59.227Z</lastmod></url>
+<url><loc>http://localhost:3000/blog/sample-2</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-04-12T18:19:59.227Z</lastmod></url>
+<url><loc>http://localhost:3000/blog/sample-3</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-04-12T18:19:59.227Z</lastmod></url>
+<url><loc>http://localhost:3000/blog/sample-4</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-04-12T18:19:59.227Z</lastmod></url>
 </urlset>

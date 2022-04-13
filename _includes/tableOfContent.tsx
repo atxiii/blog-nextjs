@@ -16,7 +16,7 @@ const Item = tw.li`px-2 mb-2`;
 export const TableOfContent = ({ content }: { content: string }) => {
   const getHeadings = (source: any) => {
     const regex = /<h[0-6].*?\>(.*?)<\/.\d?>/g;
-
+    const spaceRegex = /\s/gm;
     let headings: Headings[] = [];
     let m;
 
@@ -50,7 +50,7 @@ export const TableOfContent = ({ content }: { content: string }) => {
           // Make Link
           if (tagHead.text.includes(' ')) {
             tagHead.link = `#${tagHead.text
-              .replaceAll(' ', '_')
+              .replace(spaceRegex, '_')
               .toLowerCase()}`;
           }
 
