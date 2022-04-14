@@ -3,7 +3,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { LinkIcon } from './Icons/linkIcon';
 // Styles
-const ProjectContainer = tw.section`flex flex-nowrap pt-40 h-[100vh]`;
+const ProjectContainer = styled.section`
+  ${tw`flex flex-nowrap pt-40 h-[100vh] overflow-hidden`}
+`;
 const PorjectCard = styled.div`
   ${tw`w-screen grid md:grid-cols-5 gap-5 relative flex-shrink-0`}
 
