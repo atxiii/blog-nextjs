@@ -120,7 +120,7 @@ const NavbarSimple = ({ links }: { links: Array<Links> }) => {
           type="button"
           className={`${
             nav ? 'open hidden' : 'close block'
-          } menu__hamburger__open opacity-100 md:hidden fixed top-5 right-14 z-50 flex justify-center items-center z-10 w-10 h-10 bg-slate-700 backdrop-blur-sm opacity-50 hover:opacity-100 rounded-lg dark:bg-gray-600 flex items-center justify-center  hover:ring-2 ring-gray-300  transition-all`}
+          } menu__hamburger__open opacity-100 md:hidden z-50 flex justify-center items-center z-10 w-9 h-9 ml-2 bg-slate-700 backdrop-blur-sm opacity-50 hover:opacity-100 rounded-lg dark:bg-gray-600 flex items-center justify-center  hover:ring-2 ring-gray-300  transition-all`}
           onClick={handleMenu}
         >
           <span className="absolute bg-slate-100 w-[50%] h-[50%] rounded-full z-[3]"></span>
@@ -133,7 +133,7 @@ const NavbarSimple = ({ links }: { links: Array<Links> }) => {
           type="button"
           className={`${
             nav ? 'open block' : 'close hidden'
-          } menu__hamburger__close opacity-0 md:hidden fixed top-5 right-14 z-50 flex justify-center items-center z-10 w-10 h-10 bg-slate-700 backdrop-blur-sm opacity-50 hover:opacity-100 rounded-lg dark:bg-gray-600 flex items-center justify-center  hover:ring-2 ring-gray-300  transition-all`}
+          } menu__hamburger__close opacity-0 md:hidden z-50 flex justify-center items-center z-10 w-9 h-9 ml-2 bg-slate-700 backdrop-blur-sm opacity-50 hover:opacity-100 rounded-lg dark:bg-gray-600 flex items-center justify-center  hover:ring-2 ring-gray-300  transition-all`}
           onClick={handleMenu}
         >
           <span className="absolute bg-slate-100 w-[50%] h-[50%] rounded-full z-[3]"></span>
