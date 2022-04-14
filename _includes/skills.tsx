@@ -1,10 +1,10 @@
 import tw, { styled } from 'twin.macro';
 
-const SkillContainer = tw.section`border grid md:grid-cols-5 grid-cols-1 gap-5 h-[600px] relative items-center text-white`;
+const SkillContainer = tw.section`border grid md:grid-cols-5 grid-cols-1 gap-0 md:gap-5 h-[600px] relative items-center content-center text-white`;
 const SkillList = tw.ul`list-disc hidden`;
 const SkillItem = tw.li``;
 const SkillExperience = styled.h3`
-  ${tw`text-xl absolute top-1/2 font-display -top-4 text-black`}
+  ${tw`text-xl absolute top-1/2 font-display -top-4 text-black dark:text-white`}
 
   &>.number {
     ${tw`text-[200px] font-display `}
@@ -18,7 +18,7 @@ const SkillExperience = styled.h3`
   }
 
   & > .year {
-    ${tw`block m-20`}
+    ${tw`block m-20 dark:text-white`}
   }
 `;
 export const Skills = () => {

@@ -48,8 +48,6 @@ export const projectAnimation = () => {
       end: () =>
         '+=' +
         project.offsetWidth * (maxWidth / (maxWidth - window.innerWidth)),
-
-      toggleClass: { targets: project, className: 'active' },
     });
   });
 

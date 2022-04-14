@@ -7,6 +7,7 @@ import tw from 'twin.macro';
 import { customize } from '_api';
 import { LinkIcon } from './Icons/linkIcon';
 import { gsap } from 'gsap';
+import { Logo } from './Icons/logo';
 
 const Menu = tw.div`opacity-0 md:opacity-100 overflow-hidden hidden md:flex justify-center items-center md:static fixed top-16 right-10 bg-gray-800/80 md:bg-transparent rounded w-[0] md:w-auto text-white md:text-black p-2 backdrop-blur md:backdrop-filter-none z-50`;
 
@@ -45,16 +46,6 @@ const NavbarSimple = ({ links }: { links: Array<Links> }) => {
     const closeBtn = document.querySelector('.menu__hamburger__close');
     const menuLinks = document.querySelectorAll('.nav__menu ul li a');
 
-    // animate if click on menu links
-    // if (menuLinks) {
-    //   menuLinks.forEach(menuLink => {
-    //     menuLink.addEventListener('click', () => {
-    //       t1.reverse();
-    //       t1.reversed(true);
-    //     });
-    //   });
-    // }
-
     // animate if click on close button
     if (closeBtn) {
       closeBtn.addEventListener('click', () => {
@@ -88,17 +79,8 @@ const NavbarSimple = ({ links }: { links: Array<Links> }) => {
       <Link href="/">
         <a title="home" className="mr-auto z-10">
           <h1 className="flex">
-            <span className="relative w-[50px]">
-              <Image
-                alt="Home"
-                src={
-                  resolvedTheme === 'light'
-                    ? '/logoipsum-logo-64.svg'
-                    : '/dark-logo.png'
-                }
-                layout="fill"
-                priority={true}
-              />
+            <span className="relative ">
+              <Logo mode={resolvedTheme} width="40" height="40" />
             </span>
             <span className="font-display text-4xl">Rick</span>
           </h1>
@@ -112,7 +94,7 @@ const NavbarSimple = ({ links }: { links: Array<Links> }) => {
                 <Link href={item.link}>
                   <a
                     title={item.name}
-                    className=" font-display px-3 text-xl md:leading-snug block cursor-pointer z-1"
+                    className=" font-display px-3 text-xl md:leading-snug block cursor-pointer z-1 dark:text-white"
                   >
                     {item.name}
                   </a>
@@ -138,7 +120,7 @@ const NavbarSimple = ({ links }: { links: Array<Links> }) => {
           type="button"
           className={`${
             nav ? 'open hidden' : 'close block'
-          } menu__hamburger__open opacity-100 md:hidden fixed top-5 right-10 z-50 flex justify-center items-center z-10 w-10 h-10 bg-slate-700 backdrop-blur-sm opacity-50 hover:opacity-100 rounded-lg dark:bg-gray-600 flex items-center justify-center  hover:ring-2 ring-gray-300  transition-all`}
+          } menu__hamburger__open opacity-100 md:hidden fixed top-5 right-14 z-50 flex justify-center items-center z-10 w-10 h-10 bg-slate-700 backdrop-blur-sm opacity-50 hover:opacity-100 rounded-lg dark:bg-gray-600 flex items-center justify-center  hover:ring-2 ring-gray-300  transition-all`}
           onClick={handleMenu}
         >
           <span className="absolute bg-slate-100 w-[50%] h-[50%] rounded-full z-[3]"></span>
@@ -151,7 +133,7 @@ const NavbarSimple = ({ links }: { links: Array<Links> }) => {
           type="button"
           className={`${
             nav ? 'open block' : 'close hidden'
-          } menu__hamburger__close opacity-0 md:hidden fixed top-5 right-10 z-50 flex justify-center items-center z-10 w-10 h-10 bg-slate-700 backdrop-blur-sm opacity-50 hover:opacity-100 rounded-lg dark:bg-gray-600 flex items-center justify-center  hover:ring-2 ring-gray-300  transition-all`}
+          } menu__hamburger__close opacity-0 md:hidden fixed top-5 right-14 z-50 flex justify-center items-center z-10 w-10 h-10 bg-slate-700 backdrop-blur-sm opacity-50 hover:opacity-100 rounded-lg dark:bg-gray-600 flex items-center justify-center  hover:ring-2 ring-gray-300  transition-all`}
           onClick={handleMenu}
         >
           <span className="absolute bg-slate-100 w-[50%] h-[50%] rounded-full z-[3]"></span>

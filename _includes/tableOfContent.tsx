@@ -48,11 +48,9 @@ export const TableOfContent = ({ content }: { content: string }) => {
           tagHead.text = decode(match);
 
           // Make Link
-          if (tagHead.text.includes(' ')) {
-            tagHead.link = `#${tagHead.text
-              .replace(spaceRegex, '_')
-              .toLowerCase()}`;
-          }
+          tagHead.link = `#${tagHead.text
+            .replace(spaceRegex, '_')
+            .toLowerCase()}`;
 
           headings.push(tagHead);
         }

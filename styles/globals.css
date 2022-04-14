@@ -6,6 +6,18 @@
   --cursor-size: 50px;
 }
 
+@layer utilities {
+  /* Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
 #cursor {
   @apply fixed pointer-events-none mix-blend-difference hidden md:block;
   top: calc(var(--cursor-size) * -0.5);

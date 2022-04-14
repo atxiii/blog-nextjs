@@ -26,7 +26,7 @@ const Intro = () => {
         <Link href="/about">
           <a className="text-onion/70">
             <h2 className="font-display text-4xl text-onion mt-10 mb-4">
-              Biography
+              About Me
             </h2>
           </a>
         </Link>
@@ -42,11 +42,16 @@ const Intro = () => {
           <br />
         </p>
 
-        <h2 className="font-display text-4xl text-onion mt-10 mb-4">
-          About blog
-        </h2>
+        <Link href="/about">
+          <a className="text-onion/70">
+            <h2 className="font-display text-4xl text-onion mt-10 mb-4">
+              I'll Share...
+            </h2>
+          </a>
+        </Link>
+
         <p>
-          In publishing and graphic design, lorem ipsum is common
+          I will share graphic design articles, lorem ipsum is common
           placeholder text used to demonstrate the graphic elements of a
           document or visual presentation, such as web pages, typography,
           and graphical layout. In publishing and graphic design, lorem

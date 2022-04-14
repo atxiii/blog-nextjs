@@ -44,7 +44,7 @@ const Card = ({ post }: any) => {
             </a>
           </Link>
 
-          <span className="ml-auto text-zinc-900 text-sm md:text-md">
+          <span className="ml-auto text-zinc-900 dark:text-white text-sm md:text-md">
             {post.readingTime.text}
           </span>
         </div>

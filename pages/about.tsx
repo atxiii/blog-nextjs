@@ -53,8 +53,8 @@ const About: NextPage = () => {
       <Skills />
 
       {customize.social && (
-        <div className="contact overflow-hidden flex flex-nowrap border-t-2 border-b-2 border-black my-40">
-          <h2 className="font-display text-3xl md:text-6xl bg-white z-40">
+        <div className="contact overflow-hidden flex flex-nowrap border-t-2 border-b-2 border-black dark:border-white my-40">
+          <h2 className="font-display text-3xl md:text-6xl bg-white z-40 dark:bg-skyly">
             Contact Me
           </h2>
           <div className="contact-wrapper w-[60%]">

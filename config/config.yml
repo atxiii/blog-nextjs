@@ -1,5 +1,5 @@
 url: 'localhost:3000'
-darkMode: 'off'
+darkMode: 'on'
 # Home Configuration
 home:
   title: 'My Blog'
