@@ -20,16 +20,12 @@ export const Customize = defineDocumentType(() => ({
     archive: { type: 'json' },
     postsSort: { type: 'string' },
     postsOrder: { type: 'string' },
-    openGraph: { type: 'json' },
-    type: { type: 'string' },
-    locale: { type: 'string' },
-    site_name: { type: 'string' },
-    titleTemplate: { type: 'string' },
     menu: { type: 'json', required: true },
     name: { type: 'string' },
     link: { type: 'string' },
     img: { type: 'string' },
     social: { type: 'json', required: true },
+    acitveArrowPaginationAfter: { type: 'number', default: 20 },
   },
 }));
 

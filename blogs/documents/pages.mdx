@@ -1,0 +1,113 @@
+---
+title: 'Pages'
+description: 'Pages in this theme'
+publishedAt: '4-16-2020'
+tag: ['Document', 'Page']
+cover: pages.webp
+author: 'Hossein Shourabi'
+tableOfContent: 'on'
+---
+
+# Pages
+
+- Home
+- Blog
+- About
+- Tag
+
+## Home Page:
+
+The source of home page located on `pages/index.tsx`
+
+![home-page](/images/blogs/documents/pages/home-page.png)
+
+### Home Sections
+
+The home page have 3 section,
+each section is a component that located on `_includes` directory.
+
+1.  Intro → intro.tsx
+
+        Include Intro Image, content, social links.
+
+        > social links are a component (social.tsx) that you can set link and name of socials in `/config/config.yml`.
+
+        ![socials](/images/blogs/documents/pages/socials.png)
+
+2.  Tags → tags.tsx
+
+    This section shows tags that you are using in blog posts.
+
+3.  Blog Posts → posts.tsx
+
+    This section shows blog posts, you can edit number of blog posts and other configuration in config directory.
+
+Home page settings located on `/config/config.yml`
+
+![settings](/images/blogs/documents/pages/settings.png)
+
+### Home Configuration
+
+```
+title: <your title blog>
+description: <blog description>
+gridOfPosts:
+mobile: <grid of posts for mobile devices>
+tablet: <grid of posts for tablet devices>
+desktop: <grid of posts for desktop devices>
+postsPerPage: <number of posts in home page>
+postsOrder: <Orderby 'date' or 'title'>
+postsSort: <Sort 'DESC' or 'ASC' >
+```
+
+## Archive page (Blog)
+
+Since this theme is using pagination, the source of blog page located on `pages/blog/[[...page]].tsx`.
+
+### Blog Page Sections
+
+The blog page have 4 sections:
+
+- Title
+- Tags
+- Posts
+- Pagination
+
+### Pagination in blog page
+
+You can find the source of pagination on `_includes/pagination.tsx`
+
+You can change the number of posts per page in `/config/config.yml`
+
+### Blog Configuration
+
+The blog config is located on `/config/config.yml`.
+
+![blog config|contain](/images/blogs/documents/pages/blog-config.png)
+
+## About Page
+
+You can write about your self or make your CV in this page.
+
+The source of home page located on `pages/about.tsx`
+
+This page has 4 sections:
+
+- Intro
+- Projects
+
+  The Projects are a component that located on `_includes/projects.tsx`
+
+- Skill
+
+  The Skills are a component that located on `_includes/skills.tsx`
+
+- Contact
+
+  The contact links deal with social component `_includes/social.tsx`
+
+The about page has animation and interaction, you can find the animation files on `helper/animations`
+
+## Tag Page
+
+Tag page lists all of tags that used in blog posts.

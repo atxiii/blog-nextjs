@@ -24,7 +24,7 @@ module.exports = {
     extend: {
       colors: {
         onion: '#CD6868',
-        skyly: '#072534',
+        skyly: '#0a0a0a',
       },
     },
   },

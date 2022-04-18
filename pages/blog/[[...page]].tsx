@@ -6,7 +6,7 @@ import Posts from '@includes/posts';
 import Tags from '@includes/tags';
 import Pagination from '@includes/pagination';
 import { sort } from 'helper/util';
-import tw from 'twin.macro';
+import { NextSeo } from 'next-seo';
 
 const settings = customize.archive;
 const POSTS_PER_PAGE = settings.postsPerPage;
@@ -18,11 +18,27 @@ export default function ArchivePage({
   currentPage,
   settings,
 }: IPosts) {
+  const canonical =
+    currentPage == 1
+      ? `${customize.url}/blog/`
+      : `${customize.url}/blog/page-${currentPage}`;
+
+  const titlePage =
+    currentPage == 1
+      ? settings.title
+      : `${settings.title}, Page[${currentPage}]`;
+
   return (
     <div className="pb-20 block">
-      <h1 className="text-5xl mb-10 mt-20 font-display">
-        {settings.title}
-      </h1>
+      <NextSeo
+        title={titlePage}
+        description={settings.description}
+        canonical={canonical}
+        openGraph={{
+          url: `${customize.url}/blog`,
+        }}
+      />
+      <h1 className="text-5xl mb-10 mt-20 font-display">{titlePage}</h1>
       <Tags data={tags} title={'Tags'} />
       <Posts data={posts} option={settings} />
       <Pagination totalPages={totalPages} currentPage={currentPage} />

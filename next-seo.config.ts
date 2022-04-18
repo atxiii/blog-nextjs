@@ -1,15 +1,15 @@
 import type { DefaultSeoProps } from 'next-seo';
-import { customize } from './_api';
+
 const SEO: DefaultSeoProps = {
-  titleTemplate: customize.titleTemplate,
-  defaultTitle: customize.home.title,
-  description: customize.home.description,
-  canonical: customize.url,
+  titleTemplate: '%s | MrCatDev',
+  defaultTitle: 'MrCatDev',
+  description: 'MrCatDev Portfolio',
+  canonical: 'mrcatdev.com',
   openGraph: {
-    type: customize.openGraph.type,
-    locale: customize.openGraph.local,
-    url: customize.url,
-    site_name: customize.openGraph.site_name,
+    url: 'mrcatdev.com',
+    type: 'website',
+    locale: 'id_ID',
+    site_name: 'mrcatdev',
   },
   twitter: {
     cardType: 'summary_large_image',

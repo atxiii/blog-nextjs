@@ -85,7 +85,10 @@ const Content = styled.section`
   }
 
   pre {
-    ${tw`bg-skyly dark:bg-gray-900 text-white p-4  break-words w-full overflow-scroll my-10 rounded border border-white`}
+    ${tw`bg-skyly block dark:bg-gray-900 text-white p-4 break-words w-full overflow-scroll my-10 rounded border border-white`}
+    &>.code-highlight {
+      ${tw`block`}
+    }
   }
 
   blockquote {

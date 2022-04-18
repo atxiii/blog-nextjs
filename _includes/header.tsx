@@ -1,4 +1,4 @@
-import NavbarSimple from './nav2';
+import NavbarSimple from './navbar';
 import { customize } from '_api';
 
 const Header = () => {

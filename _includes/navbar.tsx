@@ -90,7 +90,7 @@ const NavbarSimple = ({ links }: { links: Array<Links> }) => {
         <ul className="nav__menu-wrapper hidden md:flex">
           {links.map((item, key) => {
             return (
-              <li key={key} className="group">
+              <li key={`menu_${key}`} className="group">
                 <Link href={item.link}>
                   <a
                     title={item.name}

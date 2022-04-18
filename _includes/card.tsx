@@ -9,7 +9,7 @@ const Card = ({ post }: any) => {
   });
 
   return (
-    <div className="gs_reveal md:p-5 p-3 relative shadow-lg from-white to-slate-50 bg-gradient-to-b  dark:from-gray-700 dark:to-gray-800">
+    <div className="gs_reveal md:p-5 p-3 relative shadow-lg from-white to-slate-50 bg-gradient-to-b  dark:from-zinc-900 dark:to-zinc-800">
       <figure className="relative">
         {post.imageUrl && (
           <Image

@@ -32,7 +32,6 @@ function sortByTitle<Number>(a: any, b: any, order: string) {
 function sortByDate<Number>(a: any, b: any, order: string) {
   const sanitizeOrder = order.toUpperCase();
 
-  console.log(a.publishedAt);
   const dateA = new Date(a.publishedAt).getTime();
   const dateB = new Date(b.publishedAt).getTime();
 

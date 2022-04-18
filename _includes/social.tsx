@@ -7,7 +7,7 @@ interface Links {
 
 const Social = ({ links }: { links: Array<Links> }) => {
   return (
-    <ul className="rotate-text-vertical-rl z-50 absolute flex rotate-180 translate-x-0">
+    <ul className="rotate-text-vertical-rl z-50 absolute flex rotate-180 translate-x-0 border-l-2 border-white h-full justify-end md:border-none">
       {links.map(item => {
         return (
           <li key={item.name}>

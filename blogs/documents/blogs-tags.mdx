@@ -1,0 +1,173 @@
+---
+title: 'Blog & Tags'
+description: 'Single post and tag'
+publishedAt: '4-18-2020'
+tag: ['Document', 'Getting Start']
+cover: blog.webp
+author: 'Hossein Shourabi'
+tableOfContent: 'on'
+---
+
+# Single Post
+
+Since for blog I've used dynamic routes, you can find the source of code in `pages/blog/[slug].tsx`
+
+The single post using a specific layout (blogLayout) that located on `_layouts/blogLayout.tsx`.
+
+In **blogLayout** you can see the CSS and single post codes.
+
+## Writing
+
+At the root of the directory, you can see the `blogs` folder where you can make a blog post with `mdx` type or put your mdx file here.
+
+### Writing Structure
+
+The single post has 2 section:
+
+1. Front matter
+
+Front matter allows page-specific metadata and functionality to be included at the top of a Markdown file.
+
+![yaml|contain](/images/blogs/documents/blogs-tags/yml.png)
+
+The above image is an example of front-matter for this theme.
+
+```
+---
+title: <your-title>
+description: <your-description>
+publishedAt: <publish Date 'MM-DD-YYYY'
+tag: <your tags> → this must be an array like: ['Document', 'Getting Start']
+cover: <name of your cover> → you need to put your cover in public/images/<your-path>
+author: <your-name>
+tableOfContent: <Enable/Disable table of content> → on is Enable and off is Disable.
+---
+```
+
+2.  Body
+
+The body is markdown that support the mdx, MDX allows you to use JSX in your markdown content.
+
+for example:
+
+```
+<div
+  style={{
+    padding: '1rem',
+    backgroundColor: 'darkOrange',
+    borderRadius: '10px',
+    color: 'white',
+  }}
+>
+  <span>This is a test for MDX</span>
+</div>
+```
+
+**Output**
+
+<div
+  style={{
+    padding: '1rem',
+    backgroundColor: 'darkOrange',
+    borderRadius: '10px',
+    color: 'white',
+  }}
+>
+  <span>This is a test for MDX</span>
+</div>
+
+### Local Image and Cover
+
+Generaly images located on the public directory. This theme has a special discipline to keep the structure clean for images.
+
+We assume that the name of our blog post file is `hello-world.mdx` and the name of image is `cover.png`
+
+- Example 1:
+
+<div style={{border: '2px solid green', padding:'1rem', marginBottom:'1rem'}}>
+<div
+  style={{
+    color: 'green',
+  }}
+>
+  blog post is under `blog` directory
+</div>
+So we need to move the images used for hello-world.mdx to this directory:`\public\images\blogs\hello-world`
+
+then our image path will be: `\public\images\blogs\hello-world\cover.png`
+
+</div>
+
+- Example 2:
+
+<div style={{border: '2px solid green', padding:'1rem', marginBottom:'1rem'}}>
+<div
+  style={{
+    color: 'blue',
+  }}
+>
+  blog post is under `blog\documents` directory
+</div>
+So we need to move the images used for hello-world.mdx to this directory:`\public\images\blogs\documents\hello-world`
+
+then our image path will be: `\public\images\blogs\documents\hello-world\cover.png`
+
+</div>
+
+![yaml|contain](/images/blogs/documents/blogs-tags/local-image.png)
+
+The structure for this blog post is:
+
+Blog structure
+
+```
+blogs
+└── documents
+    ├── blogs-tags.mdx
+    ├── getting-started.mdx
+    ├── menu.mdx
+    └── pages.mdx
+```
+
+According to the structure of the blog, the structure of our image will be as follows:
+
+```
+public
+├── images
+│   └── blogs
+│       └── documents
+│           ├── blogs-tags
+│           │   ├── cover.png
+│           │   ├── local-image.png
+│           │   └── yml.png
+│           ├── getting-started
+│           ├── menu
+│           └── pages
+
+
+```
+
+> Image syntax: `![yaml|contain](/images/blogs/documents/blogs-tags/local-image.png)` ![object-fit|contain](/images/blogs/documents/blogs-tags/object-fit.png)
+
+> I've used a component for modify img tag . the component name is `MDXCompoenet.tsx` that located on `_includes/MDXCompoenet.tsx`
+
+### External Image
+
+For external image, you need to add the hostname of your URL to the `images.domains` config in `next.config.js`:
+
+Ex: we modify `images.domains` for 'unsplash.com' & 'pexels.com' as follow:
+
+```
+const nextConfig = {
+  reactStrictMode: true,
+  images: {
+    domains: ['unsplash.com', 'pexels.com'],
+  },
+};
+```
+
+# Single Tag
+
+The single tag is generated automatically, the source code of tags located on `pages/tag/[slug.tsx]`.
+
+The single tag page lists posts that have same tag. (You wrote the tags on the front matter of the blog post.)

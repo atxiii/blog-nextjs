@@ -21,7 +21,6 @@ function onMouseMove(event: MouseEvent) {
   const cursor = document.getElementById('cursor');
   skill?.addEventListener('mouseenter', () => {
     cursor?.classList.add('skillActive');
-    console.log(cursor);
   });
 }
 

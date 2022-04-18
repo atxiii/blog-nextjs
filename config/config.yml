@@ -9,8 +9,8 @@ home:
     tablet: '2'
     desktop: '2'
   postsPerPage: '4'
-  postsOrder: 'date'
-  postsSort: 'DESC'
+  postsOrder: 'title'
+  postsSort: 'ASC'
 
 # Archive Configuration
 archive:
@@ -22,19 +22,15 @@ archive:
     desktop: '4'
   postsOrder: 'title'
   postsSort: 'ASC'
-  postsPerPage: '4'
+  postsPerPage: '20'
+  acitveArrowPaginationAfter: 20
 
 # Navbar Menu
 menu:
-  - name: 'Home'
-    link: '/'
-    img: '/mockup/me.jpg'
   - name: 'Blog'
     link: '/blog'
-    img: '/mockup/cover.jpg'
   - name: 'About'
     link: '/about'
-    img: '/mockup/rick.jpg'
 
 # Footer
 footerText: ' Rick. All Rights Reserved.'
@@ -47,10 +43,3 @@ social:
     link: '#facebook'
   - name: 'linkedin'
     link: '#linkdin'
-
-# Basic SEO Configuration
-openGraph:
-  type: 'website'
-  locale: 'id_ID'
-  site_name: 'MrCatDev'
-titleTemplate: '%s | MrCatDev'

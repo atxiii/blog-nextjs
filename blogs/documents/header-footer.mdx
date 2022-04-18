@@ -1,0 +1,62 @@
+---
+title: 'Header & Footer'
+description: 'Set your Header & Footer'
+publishedAt: '4-18-2020'
+tag: ['Document', 'Getting Start']
+cover: menu.webp
+author: 'Hossein Shourabi'
+tableOfContent: 'on'
+---
+
+# Header
+
+The code of Header located on `_includes/header.tsx`
+
+The header has 3 section:
+
+- Logo
+- Menu
+- Darkmode
+
+## Logo
+
+The code of logo located on `_includes/navbar.tsx` line **83**
+
+![logo|contain](/images/blogs/documents/menu/logo.png)
+
+Current Logo is a svg that located on `_includes/icons/logo.tsx`, I've used svg because we can control fill color for `Darkmode` option.
+
+if you want use png/jpeg or other types you can replace code to this:
+
+```
+
+<Image
+  alt="Home"
+  src={resolvedTheme === 'light' ? '/logo.png' : '/dark-logo.png'}
+  layout="responsive"
+  width="277"
+  height="109"
+  priority={true}
+/>
+
+```
+
+## Menu
+
+The code of menu located on `_includes/navbar.tsx` line **89**
+
+You can set your menu in `config/config.yml`
+
+![logo|contain](/images/blogs/documents/menu/menu.png)
+
+## Darkmode
+
+The code of Darkmode located on `_includes/navbar.tsx` line **117**
+
+You can disable the Darkmode option in `config/config.yml`.
+
+> darkMode: 'off'
+
+# Footer
+
+At the `config/config.yml`, you can find the footer text.

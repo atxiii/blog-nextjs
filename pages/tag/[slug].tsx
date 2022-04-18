@@ -1,5 +1,5 @@
 import { allBlogs } from 'contentlayer/generated';
-import { allTags } from '_api';
+import { allTags, customize } from '_api';
 import Link from 'next/link';
 import { IParam, IPosts } from 'types';
 import { GoBack } from '@includes/goBack';
@@ -8,6 +8,7 @@ import tw, { styled } from 'twin.macro';
 import { useEffect } from 'react';
 import { revealAnimation } from 'helper/animations/reveals';
 import { LinkIcon } from '@includes/Icons/linkIcon';
+import { NextSeo } from 'next-seo';
 interface tagParams {
   posts: IPosts['posts'];
   tag: IParam;
@@ -17,13 +18,22 @@ const beforeDefualt = `relative text-sm before:text-skyly before:absolute before
 const ReadingTIME = tw.p`${beforeDefualt} before:content-['Reading'] md:col-span-1 col-span-3`;
 const BlogTitle = tw.a`${beforeDefualt} before:content-['Title'] before:text-sm block text-lg md:col-start-2 md:col-span-8 col-start-4 col-span-12`;
 const Tags = tw.ul`${beforeDefualt} md:before:content-['Tags'] col-span-3 md:col-span-1 col-start-1`;
-const Published = tw.time`${beforeDefualt} md:before:content-['Published'] col-start-4  col-span-8 md:col-span-1 self-end`;
+const Published = tw.time`${beforeDefualt} md:before:content-['Published'] col-start-4  col-span-8 md:col-span-1 self-end md:self-start`;
 export default function PageTag({ posts, tag }: tagParams) {
   useEffect(() => {
     revealAnimation();
   });
   return (
     <section className="gs_reveal md:mt-40 mt-20">
+      <NextSeo
+        title={`${tag}`}
+        description={`${tag}'s Post`}
+        canonical={`${customize.url}/tag/${tag}`}
+        openGraph={{
+          url: `${customize.url}/tag/${tag}`,
+        }}
+      />
+
       <h1 className="text-4xl md:text-7xl capitalize font-display mt-4 mb-20 text-center">
         {tag}'s Post
       </h1>

@@ -2,6 +2,8 @@ import React from 'react';
 import styled from '@emotion/styled';
 import Link from 'next/link';
 import tw from 'twin.macro';
+import { customize } from '_api';
+
 const Item = styled.li`
   ${tw`pl-0 my-3`}
 
@@ -52,7 +54,7 @@ const Pagination = ({
   return (
     <nav className="flex justify-center my-20">
       <ul className="list-none m-0 p-0 flex">
-        {totalPages > 20 && (
+        {totalPages > customize.acitveArrowPaginationAfter && (
           <>
             <li>
               {isFirstPage ? (
@@ -104,7 +106,7 @@ const Pagination = ({
           );
         })}
 
-        {totalPages > 20 && (
+        {totalPages > customize.acitveArrowPaginationAfter && (
           <>
             <li>
               {isLastPage ? (

@@ -5,13 +5,13 @@ import { customize } from '_api';
 const Intro = () => {
   return (
     <section className="flex flex-wrap mt-8 intro relative z-0">
-      <div className="left__side max-w-full md:w-1/3 flex sm:flex-1 sm:w-full sm:h-screen md:flex-none -z-50">
+      <div className="left__side max-w-full md:w-1/3 flex sm:flex-1 sm:w-full sm:h-screen md:flex-none -z-50 relative">
         <div className="image md:ml-6 sm:ml-0 relative">
           <Image
             alt="me"
             layout="fill"
             objectFit="cover"
-            src="/mockup/me.jpg"
+            src="/mockup/rick3.webp"
           />
         </div>
         <Social links={customize.social} />
@@ -42,7 +42,7 @@ const Intro = () => {
           <br />
         </p>
 
-        <Link href="/about">
+        <Link href="/blog">
           <a className="text-onion/70">
             <h2 className="font-display text-4xl text-onion mt-10 mb-4">
               I'll Share...
