@@ -170,12 +170,9 @@ The home page have 3 section,
 each section is a component that located on `_includes` directory.
 
 1.  Intro → intro.tsx
+    Include Intro Image, content, social links.
 
-        Include Intro Image, content, social links.
-
-        > social links are a component (social.tsx) that you can set link and name of socials in `/config/config.yml`.
-
-        ![socials](/images/blogs/documents/pages/socials.png)
+    > social links are a component (social.tsx) that you can set link and name of socials in `/config/config.yml`.
 
 2.  Tags → tags.tsx
 
@@ -189,7 +186,7 @@ Home page settings located on `/config/config.yml`
 
 ### Home Configuration
 
-```
+```yaml
 title: <your title blog>
 description: <blog description>
 gridOfPosts:
@@ -273,7 +270,7 @@ Front matter allows page-specific metadata and functionality to be included at t
 
 The above image is an example of front-matter for this theme.
 
-```
+```yaml
 ---
 title: <your-title>
 description: <your-description>
@@ -285,13 +282,13 @@ tableOfContent: <Enable/Disable table of content> → on is Enable and off is Di
 ---
 ```
 
-1.  Body
+2.  Body
 
 The body is markdown that support the mdx, MDX allows you to use JSX in your markdown content.
 
 for example:
 
-```
+```javascript
 <div
   style={{
     padding: '1rem',
@@ -303,19 +300,6 @@ for example:
   <span>This is a test for MDX</span>
 </div>
 ```
-
-**Output**
-
-<div
-  style={{
-    padding: '1rem',
-    backgroundColor: 'darkOrange',
-    borderRadius: '10px',
-    color: 'white',
-  }}
->
-  <span>This is a test for MDX</span>
-</div>
 
 ### Local Image and Cover
 
