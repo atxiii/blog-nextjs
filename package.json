@@ -6,7 +6,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postbuild": "next-sitemap --config next-sitemap.js"
+    "postbuild": "next-sitemap --config next-sitemap.js",
+    "static": "next start && next build && next export"
   },
   "dependencies": {
     "@babel/plugin-syntax-typescript": "^7.16.7",
